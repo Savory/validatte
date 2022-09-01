@@ -2,18 +2,18 @@ import { constraintKey, createValidator } from '../validate.ts';
 import { greater, greaterOrEqual, lower, lowerOrEqual } from '../behaviors/number.ts';
 
 export const GreaterOrEqual = createValidator(
-  greaterOrEqual,
-  `Number must be greater than or equal ${constraintKey}1`,
+	greaterOrEqual,
+	`Number must be greater than or equal ${constraintKey}1`,
 );
 export const Greater = createValidator(
-  greater,
-  `Number must be greater than ${constraintKey}1`,
+	greater,
+	`Number must be greater than ${constraintKey}1`,
 );
 export const LowerOrEqual = createValidator(
-  lowerOrEqual,
-  `Number must be lower than or equal ${constraintKey}1`,
+	lowerOrEqual,
+	`Number must be lower than or equal ${constraintKey}1`,
 );
 export const Lower = createValidator(
-  lower,
-  `Number must be lower than ${constraintKey}1`,
+	lower,
+	`Number must be lower than ${constraintKey}1`,
 );
