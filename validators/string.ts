@@ -3,7 +3,7 @@ import { isEmail, isRegex, lengthGreater, lengthGreaterOrEqual, lengthLower, len
 
 export const LengthGreaterOrEqual = createValidator(
 	lengthGreaterOrEqual,
-	`Length must be greater or equal than ${constraintKey}1`,
+	`Length must be greater than or equal ${constraintKey}1`,
 );
 export const LengthGreater = createValidator(
 	lengthGreater,
@@ -11,7 +11,7 @@ export const LengthGreater = createValidator(
 );
 export const LengthLowerOrEqual = createValidator(
 	lengthLowerOrEqual,
-	`Length must be lower or equal than ${constraintKey}1`,
+	`Length must be lower than or equal ${constraintKey}1`,
 );
 export const LengthLower = createValidator(
 	lengthLower,

@@ -45,7 +45,7 @@ export const validateObject = <T extends abstract new (...args: any[]) => any>(
 	obj: any,
 	Class: T,
 	...classParams: ConstructorParameters<T>
-): InstanceType<T> | any[] => {
+): any[] => {
 	const validators = Object.getOwnPropertyDescriptor(
 		Class.prototype,
 		ValidateSymbol,
@@ -90,10 +90,7 @@ export const validateObject = <T extends abstract new (...args: any[]) => any>(
 		}
 	});
 
-	if (errors.length > 0) {
-		return errors;
-	}
-	return plainToClass(obj, Class);
+	return errors;
 };
 
 export const createTypeValidator = (typeName: string) =>

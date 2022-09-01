@@ -3,7 +3,7 @@ import { greater, greaterOrEqual, lower, lowerOrEqual } from '../behaviors/numbe
 
 export const GreaterOrEqual = createValidator(
   greaterOrEqual,
-  `Number must be greater or equal than ${constraintKey}1`,
+  `Number must be greater than or equal ${constraintKey}1`,
 );
 export const Greater = createValidator(
   greater,
@@ -11,7 +11,7 @@ export const Greater = createValidator(
 );
 export const LowerOrEqual = createValidator(
   lowerOrEqual,
-  `Number must be lower or equal than ${constraintKey}1`,
+  `Number must be lower than or equal ${constraintKey}1`,
 );
 export const Lower = createValidator(
   lower,
