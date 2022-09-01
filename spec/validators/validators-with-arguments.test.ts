@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from '../../validators/types-validators.ts';
+import { IsString } from '../../validators/types-validators.ts';
 import { validateObject } from '../../validate.ts';
 import { assertEquals } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
 import { LengthGreater } from '../../validators/string.ts';

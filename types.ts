@@ -1,15 +1,14 @@
 export const ValidateSymbol = Symbol('validator');
-export type ValidateFunction = <T>(
-	property: T,
-) => boolean | ValidateResult<T>;
-export interface ValidateResult<T> {
-	replace?: T;
-	valid: boolean;
-}
+
+export type ValidateFunction = (
+	// deno-lint-ignore no-explicit-any
+	property: any,
+) => boolean;
 export type ValidateInfo = Record<string, Array<Validator> | undefined>;
 export type ValidateFunctionOptions = {
 	errorMessage?: string;
-	constraints?: unknown[];
+	// deno-lint-ignore no-explicit-any
+	constraints?: any[];
 };
 export type Validator = {
 	behavior: ValidateFunction;
