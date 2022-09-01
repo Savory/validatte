@@ -14,10 +14,14 @@ Deno.test("Type validator", () => {
   const wrongUserDataFromOutsideOurApp = { name: 3, age: "toto" };
   assertEquals(
     validateObject(wrongUserDataFromOutsideOurApp, User),
-    [{ property: "name", errorMessage: `Property must be a string`, constraints: []}, {
+    [{
+      property: "name",
+      errorMessage: `Property must be a string`,
+      constraints: [],
+    }, {
       property: "age",
       errorMessage: `Property must be a number`,
-      constraints: []
+      constraints: [],
     }],
   );
 });
