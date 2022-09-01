@@ -8,8 +8,7 @@
 
 Create a Class using TypeScript Decorators and run `validateObject`.
 
-If you need more built-in validators, please **open an issue** or **create merge
-request**
+If you need more built-in validators, please **open an issue** or **create merge request**
 
 ```ts
 import {
@@ -69,9 +68,8 @@ console.log(validateObject(failingUser, User));
 
 ## Come with us on this awesome journey
 
-We always welcome contributors, feel free to submit a new feature or report a
-bug on our [Github Repository](https://github.com/Savory/validatte) and
-[join our discord](https://discord.gg/Q7ZHuDPgjA)
+We always welcome contributors, feel free to submit a new feature or report a bug on our
+[Github Repository](https://github.com/Savory/validatte) and [join our discord](https://discord.gg/Q7ZHuDPgjA)
 
 ## License
 

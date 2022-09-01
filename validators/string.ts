@@ -1,12 +1,5 @@
 import { constraintKey, createValidator } from '../validate.ts';
-import {
-	isEmail,
-	isRegex,
-	lengthGreater,
-	lengthGreaterOrEqual,
-	lengthLower,
-	lengthLowerOrEqual,
-} from '../behaviors/string.ts';
+import { isEmail, isRegex, lengthGreater, lengthGreaterOrEqual, lengthLower, lengthLowerOrEqual } from '../behaviors/string.ts';
 
 export const LengthGreaterOrEqual = createValidator(
 	lengthGreaterOrEqual,

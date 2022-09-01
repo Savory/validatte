@@ -12,7 +12,8 @@
 	"fmt": {
 		"options": {
 			"singleQuote": true,
-			"useTabs": true
+			"useTabs": true,
+			"lineWidth": 130
 		},
 		"files": {
 			"exclude": ["coverage/", "doc/"]

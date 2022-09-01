@@ -1,13 +1,7 @@
 // deno-lint-ignore-file no-explicit-any
 
 import { plainToClass } from './transform.ts';
-import {
-	ValidateFunction,
-	ValidateFunctionOptions,
-	ValidateInfo,
-	ValidateSymbol,
-	Validator,
-} from './types.ts';
+import { ValidateFunction, ValidateFunctionOptions, ValidateInfo, ValidateSymbol, Validator } from './types.ts';
 import { createErrorMessage } from './errors.ts';
 
 export const constraintKey = `$constraint`;
