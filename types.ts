@@ -1,5 +1,5 @@
 export const ValidateSymbol = Symbol('validator');
-export type ValidateFunction = <T extends any>(
+export type ValidateFunction = <T>(
 	property: T,
 ) => boolean | ValidateResult<T>;
 export interface ValidateResult<T> {
@@ -9,7 +9,7 @@ export interface ValidateResult<T> {
 export type ValidateInfo = Record<string, Array<Validator> | undefined>;
 export type ValidateFunctionOptions = {
 	errorMessage?: string;
-	constraints?: any[];
+	constraints?: unknown[];
 };
 export type Validator = {
 	behavior: ValidateFunction;

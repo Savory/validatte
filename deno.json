@@ -1,7 +1,6 @@
 {
 	"lint": {
 		"files": {
-			"include": ["src/"],
 			"exclude": ["./**/*.test.ts"]
 		},
 		"rules": {

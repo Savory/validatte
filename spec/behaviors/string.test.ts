@@ -9,7 +9,16 @@ import {
 } from '../../behaviors/string.ts';
 import TestContext = Deno.TestContext;
 
-const testSuites: any[] = [
+type TestSuite = {
+	// deno-lint-ignore no-explicit-any
+	behavior: (...args: any[]) => (prop: any) => boolean;
+	arguments: unknown[];
+	testedValues: unknown[];
+	results: unknown[];
+	names: string[];
+};
+
+const testSuites: TestSuite[] = [
 	{
 		behavior: lengthLowerOrEqual,
 		arguments: [5],
