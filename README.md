@@ -47,7 +47,7 @@ class User {
 const user = new User();
 user.email = 'myemail@mydomain.com';
 console.log(validateObject(user, User));
-// ExampleClass { specialNumber: 13, randomValue: "asd" }
+// User { email: 'myemail@mydomain.com' }
 
 // ---------- //
 
@@ -55,6 +55,8 @@ console.log(validateObject(user, User));
 const failingUser = new User();
 failingUser.email = 'wrongemail@email.com';
 console.log(validateObject(failingUser, User));
+
+/*
 [
 	{
 		property: 'email',
@@ -62,6 +64,7 @@ console.log(validateObject(failingUser, User));
 		constraints: ['mydomain.com'],
 	},
 ];
+*/
 ```
 
 ## Come with us on this awesome journey
