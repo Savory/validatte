@@ -1,1 +1,1 @@
-export * from "./types-validators.ts";
+export * from './types-validators.ts';
