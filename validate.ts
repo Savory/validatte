@@ -1,11 +1,16 @@
 // deno-lint-ignore-file no-explicit-any
 
 import { plainToClass } from "./transform.ts";
-import { ValidateFunction, ValidateFunctionOptions, ValidateInfo, ValidateSymbol, Validator } from './types.ts';
-import { createErrorMessage } from './errors.ts';
+import {
+  ValidateFunction,
+  ValidateFunctionOptions,
+  ValidateInfo,
+  ValidateSymbol,
+  Validator,
+} from "./types.ts";
+import { createErrorMessage } from "./errors.ts";
 
 export const constraintKey = `$constraint`;
-
 
 export const createDecorator = (
   validatorFunction: ValidateFunction,
@@ -42,7 +47,6 @@ export const createDecorator = (
   };
 };
 
-
 export const validateObject = <T extends abstract new (...args: any[]) => any>(
   obj: any,
   Class: T,
@@ -73,14 +77,14 @@ export const validateObject = <T extends abstract new (...args: any[]) => any>(
             errors.push({
               property,
               errorMessage: createErrorMessage(validator.options),
-              constraints: validator.options?.constraints
+              constraints: validator.options?.constraints,
             });
           }
         } catch {
           errors.push({
             property,
             errorMessage: createErrorMessage(validator.options),
-            constraints: validator.options?.constraints
+            constraints: validator.options?.constraints,
           });
         }
       }
@@ -109,6 +113,9 @@ export const createValidator = <T extends Array<any>>(
   errorMessage: string,
 ) => {
   return (...args: T) => {
-    return createDecorator(validatorFunction(...args), { errorMessage, constraints: [...args] });
+    return createDecorator(validatorFunction(...args), {
+      errorMessage,
+      constraints: [...args],
+    });
   };
 };

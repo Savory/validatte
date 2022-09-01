@@ -7,7 +7,10 @@ export interface ValidateResult<T> {
   valid: boolean;
 }
 export type ValidateInfo = Record<string, Array<Validator> | undefined>;
-export type ValidateFunctionOptions = { errorMessage?: string, constraints?: any[] };
+export type ValidateFunctionOptions = {
+  errorMessage?: string;
+  constraints?: any[];
+};
 export type Validator = {
   behavior: ValidateFunction;
   options?: ValidateFunctionOptions;
