@@ -1,5 +1,8 @@
 export const ValidateSymbol = Symbol('validator');
 
+// deno-lint-ignore no-explicit-any
+export type Constructor = abstract new (...args: any[]) => any;
+
 export type ValidateFunction = (
 	// deno-lint-ignore no-explicit-any
 	property: any,

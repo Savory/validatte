@@ -1,8 +1,8 @@
 // deno-lint-ignore-file no-explicit-any
 
 import { plainToClass } from './transform.ts';
-import { ValidateFunction, ValidateFunctionOptions, ValidateInfo, ValidateSymbol, Validator } from './types.ts';
-import { createErrorMessage } from './errors.ts';
+import { Constructor, ValidateFunction, ValidateFunctionOptions, ValidateInfo, ValidateSymbol, Validator } from './types.ts';
+import { createErrorMessage, formatErrors, ValidationError } from './errors.ts';
 
 export const constraintKey = `$constraint`;
 
@@ -41,18 +41,17 @@ export const createDecorator = (
 	};
 };
 
-export const validateObject = <T extends abstract new (...args: any[]) => any>(
+export const validateObject = <T extends Constructor>(
 	obj: any,
 	Class: T,
-	...classParams: ConstructorParameters<T>
-): any[] => {
+): ValidationError[] => {
 	const validators = Object.getOwnPropertyDescriptor(
 		Class.prototype,
 		ValidateSymbol,
 	)
 		?.value as ValidateInfo | undefined;
 
-	const emptyInstance = Reflect.construct(Class, classParams);
+	const emptyInstance = Reflect.construct(Class, []);
 
 	obj = { ...emptyInstance, ...obj };
 
@@ -60,31 +59,36 @@ export const validateObject = <T extends abstract new (...args: any[]) => any>(
 		return [];
 	}
 	const errors: any[] = [];
-	Object.getOwnPropertyNames(obj).forEach((property) => {
-		const propertyValidators = validators[property];
+	Object.getOwnPropertyNames(obj).forEach((propertyName) => {
+		const propertyValidators = validators[propertyName];
 
 		if (propertyValidators) {
 			for (const validator of propertyValidators.reverse()) {
 				try {
-					const passValidation = validator.behavior(obj[property]);
+					const passValidation = validator.behavior(obj[propertyName]);
 					if (!passValidation) {
 						errors.push({
-							property,
+							property: propertyName,
 							errorMessage: createErrorMessage(validator.options),
 							constraints: validator.options?.constraints,
 						});
 					}
-				} catch {
-					errors.push({
-						property,
-						errorMessage: createErrorMessage(validator.options),
-						constraints: validator.options?.constraints,
-					});
+				} catch (err) {
+					if (Array.isArray(err)) {
+						const formattedErrors = formatErrors(err, propertyName);
+						errors.push(...formattedErrors);
+					} else {
+						errors.push({
+							property: propertyName,
+							errorMessage: createErrorMessage(validator.options),
+							constraints: validator.options?.constraints,
+						});
+					}
 				}
 			}
 		} else {
 			errors.push({
-				property,
+				property: propertyName,
 				errorMessage: 'Missing behavior',
 			});
 		}

@@ -105,13 +105,13 @@ Deno.test('Right values', async (ctx: TestContext) => {
 		rightValueInstance.email = 'thisemail@email.com';
 		rightValueInstance.regexp = 'erewreerwAerwer2023423!1';
 		const errors = validateObject(rightValueInstance, StringTest);
-		assertEquals([], errors);
+		assertEquals(errors, []);
 	});
 
 	await ctx.step('GTE and LTE specific case where equal', () => {
 		rightValueInstance.gte = 'equalto11ish';
 		rightValueInstance.lte = 'thiseigt';
 		const errors = validateObject(rightValueInstance, StringTest);
-		assertEquals([], errors);
+		assertEquals(errors, []);
 	});
 });

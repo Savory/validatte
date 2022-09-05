@@ -70,13 +70,13 @@ Deno.test('Right values', async (ctx: TestContext) => {
 		rightValueInstance.lte = -10000;
 		rightValueInstance.lt = -10000;
 		const errors = validateObject(rightValueInstance, NumberTest);
-		assertEquals([], errors);
+		assertEquals(errors, []);
 	});
 
 	await ctx.step('GTE and LTE specific case where equal', () => {
 		rightValueInstance.gte = 5;
 		rightValueInstance.lte = 6;
 		const errors = validateObject(rightValueInstance, NumberTest);
-		assertEquals([], errors);
+		assertEquals(errors, []);
 	});
 });
