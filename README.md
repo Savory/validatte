@@ -4,6 +4,8 @@
 [![CI](https://github.com/Savory/validatte/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Savory/validatte/actions/workflows/run-tests.yml)
 [![codecov](https://codecov.io/gh/Savory/validatte/branch/main/graph/badge.svg?token=R6WXVC669Z)](https://codecov.io/gh/Savory/validatte)
 
+## Available decorators
+
 ## Usage
 
 Create a Class using TypeScript Decorators and run `validateObject`.
