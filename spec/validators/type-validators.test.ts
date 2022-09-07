@@ -1,3 +1,5 @@
+// deno-lint-ignore-file no-explicit-any
+
 import { IsArray, IsNumber, IsString } from '../../validators/types-validators.ts';
 import { validateObject } from '../../validate.ts';
 import { assertEquals } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -25,11 +27,10 @@ Deno.test('Type validator', () => {
 			property: 'age',
 			errorMessage: `Property must be a number`,
 			constraints: [],
-		},
-			{
-				property: 'possibleArray',
-				errorMessage: `Property is not an array`,
-				constraints: [],
-			}],
+		}, {
+			property: 'possibleArray',
+			errorMessage: `Property is not an array`,
+			constraints: [],
+		}],
 	);
 });

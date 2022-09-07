@@ -1,3 +1,5 @@
+// deno-lint-ignore-file no-explicit-any
+
 import { createTypeValidator, createValidator } from '../validate.ts';
 
 export const IsString = createTypeValidator('string');
