@@ -1,5 +1,6 @@
-import { parsePhoneNumber } from 'https://deno.land/x/phonenumber@v3.3.0/index-esm.mjs';
-export const isPhoneNumber = (locale?: string) => (prop: string) => {
+import { parsePhoneNumber } from '../deps.ts';
+
+export const isPhoneNumber = (prop: string, locale?: string) => {
 	const pn = parsePhoneNumber(prop, locale);
 	return pn.isValid();
 };

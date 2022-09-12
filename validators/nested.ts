@@ -1,11 +1,18 @@
-import { createValidator, validateObject } from '../validate.ts';
+import { constraintKey, createDecorator, validateObject } from '../validate.ts';
 import { Constructor } from '../types.ts';
 
-// deno-lint-ignore no-explicit-any
-export const Nested = createValidator((expectedClass: Constructor) => (prop: any) => {
-	const errors = validateObject(prop, expectedClass);
-	if (errors) {
-		throw errors;
-	}
-	return true;
-}, 'Not a proper object');
+export const Nested = (expectedClass: Constructor) => {
+	return createDecorator(
+		(prop: number) => {
+			const errors = validateObject(prop, expectedClass);
+			if (errors) {
+				throw errors;
+			}
+			return true;
+		},
+		{
+			errorMessage: `Number must be lower than ${constraintKey}1`,
+			constraints: [],
+		},
+	);
+};
