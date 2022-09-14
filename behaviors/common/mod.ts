@@ -2,18 +2,12 @@ import { equals } from './equals.ts';
 import { contains } from './contains.ts';
 
 // validator version
-const version = "1.0.0-beta";
+const version = '1.0.0-beta';
 
 // validators
 export { isAfter } from './isAfter.ts';
-export {
-  isAlpha,
-  locales as isAlphaLocales,
-} from './isAlpha.ts';
-export {
-  isAlphanumeric,
-  locales as isAlphanumericLocales,
-} from './isAlphanumeric.ts';
+export { isAlpha, locales as isAlphaLocales } from './isAlpha.ts';
+export { isAlphanumeric, locales as isAlphanumericLocales } from './isAlphanumeric.ts';
 export { isAscii } from './isAscii.ts';
 export { isBase32 } from './isBase32.ts';
 export { isBase64 } from './isBase64.ts';
@@ -62,19 +56,13 @@ export { isMACAddress } from './isMACAddress.ts';
 export { isMagnetURI } from './isMagnetURI.ts';
 export { isMimeType } from './isMimeType.ts';
 export { isMongoId } from './isMongoId.ts';
-export {
-  isMobilePhone,
-  locales as mobilePhoneLocales,
-} from './isMobilePhone.ts';
+export { isMobilePhone, locales as mobilePhoneLocales } from './isMobilePhone.ts';
 export { isMultibyte } from './isMultibyte.ts';
 export { isNumeric } from './isNumeric.ts';
 export { isOctal } from './isOctal.ts';
 export { isPassportNumber } from './isPassportNumber.ts';
 export { isPort } from './isPort.ts';
-export {
-  isPostalCode,
-  locales as postalCodeLocales,
-} from './isPostalCode.ts';
+export { isPostalCode, locales as postalCodeLocales } from './isPostalCode.ts';
 export { isRFC3339 } from './isRFC3339.ts';
 export { isRgbColor } from './isRgbColor.ts';
 export { isSemVer } from './isSemVer.ts';
@@ -86,4 +74,3 @@ export { isUUID } from './isUUID.ts';
 export { isVariableWidth } from './isVariableWidth.ts';
 export { isWhitelisted } from './isWhitelisted.ts';
 export { matches } from './matches.ts';
-
