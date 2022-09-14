@@ -3,4 +3,3 @@ export const lengthGreater = (str: string, minLength: number) => str.length > mi
 export const lengthLowerOrEqual = (str: string, maxLength: number) => str.length <= maxLength;
 export const lengthLower = (str: string, maxLength: number) => str.length < maxLength;
 export const isRegex = (str: string, regex: RegExp) => regex.test(str);
-export const isEmail = (str: string) => /^[\w-\.+]+@([\w-]+\.)+[\w-]{2,4}$/.test(str);

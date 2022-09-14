@@ -1,5 +1,6 @@
 import { constraintKey, createDecorator, createValidator } from '../validate.ts';
-import { isEmail, isRegex, lengthGreater, lengthGreaterOrEqual, lengthLower, lengthLowerOrEqual } from '../behaviors/string.ts';
+import { isRegex, lengthGreater, lengthGreaterOrEqual, lengthLower, lengthLowerOrEqual } from '../behaviors/string.ts';
+import { isEmail } from '../behaviors/common/mod.ts';
 
 export const LengthGreaterOrEqual = (length: number) => {
 	return createDecorator(
