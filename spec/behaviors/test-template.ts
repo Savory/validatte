@@ -6,7 +6,7 @@ interface Options {
 	valid?: string[];
 	invalid?: string[];
 	error?: string[];
-  // deno-lint-ignore no-explicit-any
+	// deno-lint-ignore no-explicit-any
 	args?: (number | string | { [key: string]: any })[];
 }
 

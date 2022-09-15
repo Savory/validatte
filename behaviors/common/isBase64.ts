@@ -3,7 +3,7 @@ import { merge } from './util/merge.ts';
 const notBase64 = /[^A-Z0-9+\/=]/i;
 const urlSafeBase64 = /^[A-Z0-9_\-]+$/i;
 
-interface IsBase64Options {
+export interface IsBase64Options {
 	urlSafe?: boolean;
 }
 

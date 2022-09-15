@@ -1,11 +1,11 @@
 import { merge } from './util/merge.ts';
 
-interface IsByteLengthOptions {
+export interface IsByteLengthOptions {
 	min?: number;
 	max?: number;
 }
 
-const defaultIsByteLengthOptions: IsByteLengthOptions = {
+export const defaultIsByteLengthOptions: IsByteLengthOptions = {
 	min: 0,
 	max: undefined,
 };
