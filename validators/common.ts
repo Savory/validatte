@@ -11,14 +11,17 @@ import {
 	isBoolean,
 	isBtcAddress,
 	isByteLength,
-	isCreditCard, isCurrency, isDataURI, isDate, isDecimal,
+	isCreditCard,
+	isCurrency,
+	isDataURI,
+	isDate,
+	isDecimal,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions, IsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
 import { defaultCurrencyOptions } from '../behaviors/common/isCurrency.ts';
 import { defaultDecimalOptions } from '../behaviors/common/isDecimal.ts';
 import { contains, defaultContainsOptions } from '../behaviors/common/contains.ts';
-
 
 export const Contains = (seed: string, options = defaultContainsOptions) =>
 	createDecorator((prop: string) => contains(prop, seed, options), {
@@ -85,7 +88,9 @@ export const IsBtcAddress = () =>
 
 export const ByteLength = (options = defaultIsByteLengthOptions) =>
 	createDecorator((prop: string) => isByteLength(prop, options), {
-		errorMessage: `Property must have a byte length between ${constraintKey}1 and ${options.max ? `${constraintKey}1` : 'infinity'}`,
+		errorMessage: `Property must have a byte length between ${constraintKey}1 and ${
+			options.max ? `${constraintKey}1` : 'infinity'
+		}`,
 		constraints: [options.min, options.max],
 	});
 
@@ -94,22 +99,25 @@ export const IsCreditCard = () =>
 		errorMessage: 'Property must be a valid credit card number',
 	});
 
+export const IsCurrency = (options = defaultCurrencyOptions) =>
+	createDecorator((prop: string) => isCurrency(prop, options), {
+		errorMessage: 'Property must be a currency value',
+		constraints: [options],
+	});
 
-export const IsCurrency = (options = defaultCurrencyOptions) => createDecorator((prop: string) => isCurrency(prop, options), {
-	errorMessage: 'Property must be a currency value',
-	constraints: [options]
-})
+export const IsDataURI = () =>
+	createDecorator((prop: string) => isDataURI(prop), {
+		errorMessage: 'Property must be a dataURI string',
+	});
 
-export const IsDataURI = () => createDecorator((prop: string) => isDataURI(prop), {
-	errorMessage: 'Property must be a dataURI string'
-})
+export const IsDate = (format = 'YYYY/MM/DD') =>
+	createDecorator((prop: string) => isDate(prop, format), {
+		errorMessage: `Property must be a date ${constraintKey}1`,
+		constraints: [format],
+	});
 
-export const IsDate = (format = 'YYYY/MM/DD') => createDecorator((prop: string) => isDate(prop, format), {
-	errorMessage: `Property must be a date ${constraintKey}1`,
-	constraints: [format]
-})
-
-export const IsDecimal = (options = defaultDecimalOptions) => createDecorator((prop: string) => isDecimal(prop, options), {
-	errorMessage: `Property must be a decimal string for ${options.locale} locale`,
-	constraints: [options]
-})
+export const IsDecimal = (options = defaultDecimalOptions) =>
+	createDecorator((prop: string) => isDecimal(prop, options), {
+		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
+		constraints: [options],
+	});
