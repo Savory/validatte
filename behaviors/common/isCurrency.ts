@@ -78,7 +78,7 @@ function currencyRegex(options: CurrencyOptions) {
 	return new RegExp(`^(?!-? )(?=.*\\d)${pattern}$`);
 }
 
-const defaultCurrencyOptions: CurrencyOptions = {
+export const defaultCurrencyOptions: CurrencyOptions = {
 	symbol: '$',
 	require_symbol: false,
 	allow_space_after_symbol: false,

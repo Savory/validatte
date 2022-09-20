@@ -11,7 +11,7 @@ function decimalRegExp(
 	return regExp;
 }
 
-const default_decimal_options = {
+export const defaultDecimalOptions = {
 	force_decimal: false,
 	decimal_digits: '1,',
 	locale: 'en-US',
@@ -20,7 +20,7 @@ const default_decimal_options = {
 const blacklist = ['', '-', '+'];
 
 export function isDecimal(str: string, options: { force_decimal: boolean; decimal_digits: string; locale: string }) {
-	options = merge(options, default_decimal_options);
+	options = merge(options, defaultDecimalOptions);
 	if (options.locale in decimal) {
 		return !includes(blacklist, str.replace(/ /g, '')) &&
 			decimalRegExp(options).test(str);

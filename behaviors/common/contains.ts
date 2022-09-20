@@ -4,7 +4,7 @@ interface ContainsOptions {
 	ignoreCase: boolean;
 }
 
-const defaultContainsOptions: ContainsOptions = {
+export const defaultContainsOptions: ContainsOptions = {
 	ignoreCase: false,
 };
 
