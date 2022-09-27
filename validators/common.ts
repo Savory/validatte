@@ -67,7 +67,7 @@ export const IsBase64 = (option?: IsBase64Options) =>
 
 export const IsBefore = (dateToBeBefore?: string) =>
 	createDecorator((prop: string) => isBefore(prop, dateToBeBefore), {
-		errorMessage: `Property must be a date string ${dateToBeBefore ? `before ${dateToBeBefore}`: 'in the future'}`,
+		errorMessage: `Property must be a date string ${dateToBeBefore ? `before ${dateToBeBefore}` : 'in the future'}`,
 		constraints: dateToBeBefore ? [dateToBeBefore] : [],
 	});
 
@@ -91,9 +91,7 @@ export const IsBtcAddress = () =>
 
 export const ByteLength = (options = defaultIsByteLengthOptions) =>
 	createDecorator((prop: string) => isByteLength(prop, options), {
-		errorMessage: `Property must have a byte length between ${options.min ?? 0} and ${
-			options.max ?? 'infinity'
-		}`,
+		errorMessage: `Property must have a byte length between ${options.min ?? 0} and ${options.max ?? 'infinity'}`,
 		constraints: [options],
 	});
 

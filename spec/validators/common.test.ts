@@ -9,7 +9,15 @@ import {
 	IsAscii,
 	IsBase32,
 	IsBase64,
-	IsBefore, IsBic, IsBoolean, IsBtcAddress, IsCreditCard, IsCurrency, IsDataURI, IsDate, IsDecimal
+	IsBefore,
+	IsBic,
+	IsBoolean,
+	IsBtcAddress,
+	IsCreditCard,
+	IsCurrency,
+	IsDataURI,
+	IsDate,
+	IsDecimal,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -163,8 +171,8 @@ Deno.test('Common validators errors', async (ctx) => {
 	});
 	await ctx.step('ByteLength', () => {
 		assertArrayIncludes(errors, [{
-			errorMessage:  `Property must have a byte length between 1 and 5`,
-			constraints: [ { min: 1, max: 5 }],
+			errorMessage: `Property must have a byte length between 1 and 5`,
+			constraints: [{ min: 1, max: 5 }],
 			property: 'byteLength',
 		}]);
 	});
@@ -178,7 +186,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	await ctx.step('IsCurrency', () => {
 		assertArrayIncludes(errors, [{
 			errorMessage: `Property must be a currency value`,
-			constraints: [ {
+			constraints: [{
 				symbol: '$',
 				require_symbol: false,
 				allow_space_after_symbol: false,
