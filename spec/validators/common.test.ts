@@ -17,7 +17,8 @@ import {
 	IsCurrency,
 	IsDataURI,
 	IsDate,
-	IsDecimal, IsDivisibleBy,
+	IsDecimal,
+	IsDivisibleBy,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';

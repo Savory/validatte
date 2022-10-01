@@ -15,7 +15,8 @@ import {
 	isCurrency,
 	isDataURI,
 	isDate,
-	isDecimal, isDivisibleBy,
+	isDecimal,
+	isDivisibleBy,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
@@ -125,8 +126,8 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 		constraints: [options],
 	});
 
-export const IsDivisibleBy = (dividend: number) => createDecorator((prop: string) => isDivisibleBy(prop, `${dividend}`),
-	{
+export const IsDivisibleBy = (dividend: number) =>
+	createDecorator((prop: string) => isDivisibleBy(prop, `${dividend}`), {
 		errorMessage: `Property must be divisible by ${dividend}`,
-		constraints: [dividend]
-	})
+		constraints: [dividend],
+	});
