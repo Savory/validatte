@@ -17,7 +17,7 @@ import {
 	IsCurrency,
 	IsDataURI,
 	IsDate,
-	IsDecimal,
+	IsDecimal, IsDivisibleBy,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -68,6 +68,8 @@ class BodyPayload {
 	public isDate!: string;
 	@IsDecimal()
 	public isDecimal!: string;
+	@IsDivisibleBy(5)
+	public isDivisibleBy!: string;
 }
 
 Deno.test('Common validators errors', async (ctx) => {
@@ -229,6 +231,13 @@ Deno.test('Common validators errors', async (ctx) => {
 				locale: 'en-US',
 			}],
 			property: 'isDecimal',
+		}]);
+	});
+	await ctx.step('IsDivisibleBy', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be divisible by 5`,
+			constraints: [5],
+			property: 'isDivisibleBy',
 		}]);
 	});
 });
