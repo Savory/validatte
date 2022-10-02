@@ -18,6 +18,7 @@ import {
 	IsDataURI,
 	IsDate,
 	IsDecimal,
+	IsHexColor,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -68,6 +69,8 @@ class BodyPayload {
 	public isDate!: string;
 	@IsDecimal()
 	public isDecimal!: string;
+	@IsHexColor()
+	public IsHexColor!: string;
 }
 
 Deno.test('Common validators errors', async (ctx) => {
@@ -90,6 +93,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDataURI = 'nonDataURI';
 	failingPayload.isDate = 'nonDate';
 	failingPayload.isDecimal = 'nondecimla';
+	failingPayload.IsHexColor = 'nonHexcolor';
 
 	const errors = validateObject(failingPayload, BodyPayload);
 	await ctx.step('Contains', () => {
@@ -229,6 +233,13 @@ Deno.test('Common validators errors', async (ctx) => {
 				locale: 'en-US',
 			}],
 			property: 'isDecimal',
+		}]);
+	});
+	await ctx.step('IsHexColor', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a hexcolor string`,
+			constraints: [],
+			property: 'IsHexColor',
 		}]);
 	});
 });
