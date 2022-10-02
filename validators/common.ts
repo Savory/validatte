@@ -16,6 +16,7 @@ import {
 	isDataURI,
 	isDate,
 	isDecimal,
+	isLowerCase,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
@@ -123,4 +124,10 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 	createDecorator((prop: string) => isDecimal(prop, options), {
 		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
 		constraints: [options],
+	});
+
+export const IsLowerCase = () => 
+	createDecorator((prop: string) => isLowerCase(prop), {
+		errorMessage: 'Property must be in lower case',
+		constraints: [],
 	});
