@@ -237,7 +237,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	});
 	await ctx.step('IsLowerCase', () => {
 		assertArrayIncludes(errors, [{
-			errorMessage: `Property must be a string in lower cases`,
+			errorMessage: `Property must be in a string in lower cases`,
 			constraints: [],
 			property: 'isLowerCase',
 		}]);
