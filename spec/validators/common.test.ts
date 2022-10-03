@@ -89,7 +89,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isCurrency = 'nonCunrrecy';
 	failingPayload.isDataURI = 'nonDataURI';
 	failingPayload.isDate = 'nonDate';
-	failingPayload.isDecimal = 'nondecimla';
+	failingPayload.isDecimal = 'nondecimal';
 
 	const errors = validateObject(failingPayload, BodyPayload);
 	await ctx.step('Contains', () => {
