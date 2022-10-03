@@ -126,7 +126,7 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 		constraints: [options],
 	});
 
-export const IsLowerCase = () => 
+export const IsLowerCase = () =>
 	createDecorator((prop: string) => isLowerCase(prop), {
 		errorMessage: 'Property must be in lower case',
 		constraints: [],
