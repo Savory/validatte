@@ -131,3 +131,4 @@ export const IsUpperCase = () =>
 		errorMessage: 'Property must be an upper string',
 		constraints: [],
 	});
+	
