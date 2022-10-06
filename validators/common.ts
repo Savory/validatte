@@ -16,6 +16,7 @@ import {
 	isDataURI,
 	isDate,
 	isDecimal,
+	isPort,
 	isUpperCase,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
@@ -124,6 +125,12 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 	createDecorator((prop: string) => isDecimal(prop, options), {
 		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
 		constraints: [options],
+	});
+
+export const IsPort = () =>
+	createDecorator((prop: string) => isPort(prop), {
+		errorMessage: 'Property must be a port number',
+		constraints: [],
 	});
 
 export const IsUpperCase = () =>

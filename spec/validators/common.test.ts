@@ -18,6 +18,7 @@ import {
 	IsDataURI,
 	IsDate,
 	IsDecimal,
+	IsPort,
 	IsUpperCase,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
@@ -69,6 +70,8 @@ class BodyPayload {
 	public isDate!: string;
 	@IsDecimal()
 	public isDecimal!: string;
+	@IsPort()
+	public isPort!: string;
 	@IsUpperCase()
 	public isUpperCase!: string;
 }
@@ -93,6 +96,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDataURI = 'nonDataURI';
 	failingPayload.isDate = 'nonDate';
 	failingPayload.isDecimal = 'nondecimla';
+	failingPayload.isPort = '65536';
 	failingPayload.isUpperCase = 'lowercase';
 
 	const errors = validateObject(failingPayload, BodyPayload);
@@ -233,6 +237,13 @@ Deno.test('Common validators errors', async (ctx) => {
 				locale: 'en-US',
 			}],
 			property: 'isDecimal',
+		}]);
+	});
+	await ctx.step('IsPort', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a port number`,
+			constraints: [],
+			property: 'isPort',
 		}]);
 	});
 	await ctx.step('IsUpperCase', () => {
