@@ -19,6 +19,7 @@ import {
 	IsDate,
 	IsDecimal,
 	IsDivisibleBy,
+	IsEmpty,
 	IsHexColor,
 	IsIP,
 	IsLowerCase,
@@ -73,6 +74,10 @@ class BodyPayload {
 	public isDate!: string;
 	@IsDecimal()
 	public isDecimal!: string;
+
+	@IsEmpty()
+	public isEmpty!: string;
+
 	@IsLowerCase()
 	public isLowerCase!: string;
 	@IsHexColor()
@@ -106,6 +111,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDataURI = 'nonDataURI';
 	failingPayload.isDate = 'nonDate';
 	failingPayload.isDecimal = 'nondecimla';
+	failingPayload.isEmpty = 'nonEmpty';
 	failingPayload.isLowerCase = 'UPPERCASE';
 	failingPayload.IsHexColor = 'nonHexcolor';
 	failingPayload.isIP = '192.168.0.256';
@@ -250,6 +256,13 @@ Deno.test('Common validators errors', async (ctx) => {
 				locale: 'en-US',
 			}],
 			property: 'isDecimal',
+		}]);
+	});
+	await ctx.step('IsEmpty', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be empty`,
+			constraints: [],
+			property: 'isEmpty',
 		}]);
 	});
 	await ctx.step('IsLowerCase', () => {

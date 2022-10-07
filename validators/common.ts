@@ -17,6 +17,7 @@ import {
 	isDate,
 	isDecimal,
 	isDivisibleBy,
+	isEmpty,
 	isHexColor,
 	isIP,
 	isLowerCase,
@@ -128,6 +129,12 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 	createDecorator((prop: string) => isDecimal(prop, options), {
 		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
 		constraints: [options],
+	});
+
+export const IsEmpty = () =>
+	createDecorator((prop: string) => isEmpty(prop), {
+		errorMessage: `Property must be empty`,
+		constraints: [],
 	});
 
 export const IsLowerCase = () =>
