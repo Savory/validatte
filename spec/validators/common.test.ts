@@ -106,6 +106,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isLowerCase = 'UPPERCASE';
 	failingPayload.IsHexColor = 'nonHexcolor';
 	failingPayload.isDivisibleBy = '7';
+	failingPayload.isUpperCase = 'lowercase';
 
 	const errors = validateObject(failingPayload, BodyPayload);
 	await ctx.step('Contains', () => {
