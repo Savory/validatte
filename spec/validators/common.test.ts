@@ -20,6 +20,7 @@ import {
 	IsDecimal,
 	IsDivisibleBy,
 	IsHexColor,
+	IsIP,
 	IsLowerCase,
 	IsUpperCase,
 } from '../../validators/common.ts';
@@ -76,6 +77,8 @@ class BodyPayload {
 	public isLowerCase!: string;
 	@IsHexColor()
 	public IsHexColor!: string;
+	@IsIP()
+	public isIP!: string;
 	@IsDivisibleBy(5)
 	public isDivisibleBy!: string;
 
@@ -105,6 +108,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDecimal = 'nondecimla';
 	failingPayload.isLowerCase = 'UPPERCASE';
 	failingPayload.IsHexColor = 'nonHexcolor';
+	failingPayload.isIP = '192.168.0.256';
 	failingPayload.isDivisibleBy = '7';
 	failingPayload.isUpperCase = 'lowercase';
 
@@ -260,6 +264,13 @@ Deno.test('Common validators errors', async (ctx) => {
 			errorMessage: `Property must be a hexcolor string`,
 			constraints: [],
 			property: 'IsHexColor',
+		}]);
+	});
+	await ctx.step('IsIP', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be an IP address`,
+			constraints: [],
+			property: 'isIP',
 		}]);
 	});
 	await ctx.step('IsDivisibleBy', () => {
