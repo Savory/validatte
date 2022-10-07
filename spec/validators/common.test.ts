@@ -20,6 +20,7 @@ import {
 	IsDecimal,
 	IsDivisibleBy,
 	IsHexColor,
+	IsLowerCase,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -70,6 +71,8 @@ class BodyPayload {
 	public isDate!: string;
 	@IsDecimal()
 	public isDecimal!: string;
+	@IsLowerCase()
+	public isLowerCase!: string;
 	@IsHexColor()
 	public IsHexColor!: string;
 	@IsDivisibleBy(5)
@@ -96,6 +99,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDataURI = 'nonDataURI';
 	failingPayload.isDate = 'nonDate';
 	failingPayload.isDecimal = 'nondecimla';
+	failingPayload.isLowerCase = 'UPPERCASE';
 	failingPayload.IsHexColor = 'nonHexcolor';
 	failingPayload.isDivisibleBy = '7';
 
@@ -237,6 +241,13 @@ Deno.test('Common validators errors', async (ctx) => {
 				locale: 'en-US',
 			}],
 			property: 'isDecimal',
+		}]);
+	});
+	await ctx.step('IsLowerCase', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a string in lower case`,
+			constraints: [],
+			property: 'isLowerCase',
 		}]);
 	});
 	await ctx.step('IsHexColor', () => {
