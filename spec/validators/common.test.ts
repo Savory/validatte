@@ -23,6 +23,7 @@ import {
 	IsHexColor,
 	IsIP,
 	IsLowerCase,
+	IsPort,
 	IsUpperCase,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
@@ -89,6 +90,9 @@ class BodyPayload {
 
 	@IsUpperCase()
 	public isUpperCase!: string;
+
+	@IsPort()
+	public isPort!: string;
 }
 
 Deno.test('Common validators errors', async (ctx) => {
@@ -117,6 +121,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isIP = '192.168.0.256';
 	failingPayload.isDivisibleBy = '7';
 	failingPayload.isUpperCase = 'lowercase';
+	failingPayload.isPort = '65536';
 
 	const errors = validateObject(failingPayload, BodyPayload);
 	await ctx.step('Contains', () => {
@@ -299,6 +304,13 @@ Deno.test('Common validators errors', async (ctx) => {
 			errorMessage: `Property must be an uppercase only string`,
 			constraints: [],
 			property: 'isUpperCase',
+		}]);
+	});
+	await ctx.step('IsPort', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a valid port number`,
+			constraints: [],
+			property: 'isPort',
 		}]);
 	});
 });

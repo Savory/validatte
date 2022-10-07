@@ -21,6 +21,7 @@ import {
 	isHexColor,
 	isIP,
 	isLowerCase,
+	isPort,
 	isUpperCase,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
@@ -164,5 +165,11 @@ export const IsDivisibleBy = (dividend: number) =>
 export const IsUpperCase = () =>
 	createDecorator((prop: string) => isUpperCase(prop), {
 		errorMessage: 'Property must be an uppercase only string',
+		constraints: [],
+	});
+
+export const IsPort = () =>
+	createDecorator((prop: string) => isPort(prop), {
+		errorMessage: 'Property must be a valid port number',
 		constraints: [],
 	});
