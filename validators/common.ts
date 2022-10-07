@@ -16,9 +16,9 @@ import {
 	isDataURI,
 	isDate,
 	isDecimal,
-	isLowerCase,
 	isDivisibleBy,
 	isHexColor,
+	isLowerCase,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';

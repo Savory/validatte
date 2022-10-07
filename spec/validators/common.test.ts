@@ -18,9 +18,9 @@ import {
 	IsDataURI,
 	IsDate,
 	IsDecimal,
-	IsLowerCase,
 	IsDivisibleBy,
 	IsHexColor,
+	IsLowerCase,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -248,7 +248,7 @@ Deno.test('Common validators errors', async (ctx) => {
 			errorMessage: `Property must be a string in lower case`,
 			constraints: [],
 			property: 'isLowerCase',
-     }]);
+		}]);
 	});
 	await ctx.step('IsHexColor', () => {
 		assertArrayIncludes(errors, [{
