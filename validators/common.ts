@@ -1,4 +1,4 @@
-import { constraintKey, createDecorator } from '../validate.ts';
+import { createDecorator } from '../validate.ts';
 import {
 	isAfter,
 	isAlpha,
@@ -17,6 +17,7 @@ import {
 	isDate,
 	isDecimal,
 	isDivisibleBy,
+	isHexColor,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
@@ -124,6 +125,12 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 	createDecorator((prop: string) => isDecimal(prop, options), {
 		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
 		constraints: [options],
+	});
+
+export const IsHexColor = () =>
+	createDecorator((prop: string) => isHexColor(prop), {
+		errorMessage: 'Property must be a hexcolor string',
+		constraints: [],
 	});
 
 export const IsDivisibleBy = (dividend: number) =>
