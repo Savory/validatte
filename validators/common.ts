@@ -19,6 +19,7 @@ import {
 	isDivisibleBy,
 	isHexColor,
 	isLowerCase,
+	isUpperCase,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
@@ -144,4 +145,10 @@ export const IsDivisibleBy = (dividend: number) =>
 	createDecorator((prop: string) => isDivisibleBy(prop, `${dividend}`), {
 		errorMessage: `Property must be divisible by ${dividend}`,
 		constraints: [dividend],
+	});
+
+export const IsUpperCase = () =>
+	createDecorator((prop: string) => isUpperCase(prop), {
+		errorMessage: 'Property must be an uppercase only string',
+		constraints: [],
 	});
