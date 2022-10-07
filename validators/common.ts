@@ -18,6 +18,7 @@ import {
 	isDecimal,
 	isDivisibleBy,
 	isHexColor,
+	isIP,
 	isLowerCase,
 	isUpperCase,
 } from '../behaviors/common/mod.ts';
@@ -138,6 +139,12 @@ export const IsLowerCase = () =>
 export const IsHexColor = () =>
 	createDecorator((prop: string) => isHexColor(prop), {
 		errorMessage: 'Property must be a hexcolor string',
+		constraints: [],
+	});
+
+export const IsIP = () =>
+	createDecorator((prop: string) => isIP(prop), {
+		errorMessage: 'Property must be an IP address',
 		constraints: [],
 	});
 
