@@ -86,11 +86,6 @@ export const validateObject = <T extends Constructor>(
 					}
 				}
 			}
-		} else {
-			errors.push({
-				property: propertyName,
-				errorMessage: 'Missing behavior',
-			});
 		}
 	});
 
