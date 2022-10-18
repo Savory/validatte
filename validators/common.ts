@@ -1,4 +1,4 @@
-import { constraintKey, createDecorator } from '../validate.ts';
+import { createDecorator } from '../validate.ts';
 import {
 	isAfter,
 	isAlpha,
@@ -16,6 +16,13 @@ import {
 	isDataURI,
 	isDate,
 	isDecimal,
+	isDivisibleBy,
+	isEmpty,
+	isHexColor,
+	isIP,
+	isLowerCase,
+	isPort,
+	isUpperCase,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
@@ -123,4 +130,46 @@ export const IsDecimal = (options = defaultDecimalOptions) =>
 	createDecorator((prop: string) => isDecimal(prop, options), {
 		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
 		constraints: [options],
+	});
+
+export const IsEmpty = () =>
+	createDecorator((prop: string) => isEmpty(prop), {
+		errorMessage: `Property must be empty`,
+		constraints: [],
+	});
+
+export const IsLowerCase = () =>
+	createDecorator((prop: string) => isLowerCase(prop), {
+		errorMessage: `Property must be a string in lower case`,
+		constraints: [],
+	});
+
+export const IsHexColor = () =>
+	createDecorator((prop: string) => isHexColor(prop), {
+		errorMessage: 'Property must be a hexcolor string',
+		constraints: [],
+	});
+
+export const IsIP = () =>
+	createDecorator((prop: string) => isIP(prop), {
+		errorMessage: 'Property must be an IP address',
+		constraints: [],
+	});
+
+export const IsDivisibleBy = (dividend: number) =>
+	createDecorator((prop: string) => isDivisibleBy(prop, `${dividend}`), {
+		errorMessage: `Property must be divisible by ${dividend}`,
+		constraints: [dividend],
+	});
+
+export const IsUpperCase = () =>
+	createDecorator((prop: string) => isUpperCase(prop), {
+		errorMessage: 'Property must be an uppercase only string',
+		constraints: [],
+	});
+
+export const IsPort = () =>
+	createDecorator((prop: string) => isPort(prop), {
+		errorMessage: 'Property must be a valid port number',
+		constraints: [],
 	});

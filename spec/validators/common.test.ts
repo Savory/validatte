@@ -18,6 +18,13 @@ import {
 	IsDataURI,
 	IsDate,
 	IsDecimal,
+	IsDivisibleBy,
+	IsEmpty,
+	IsHexColor,
+	IsIP,
+	IsLowerCase,
+	IsPort,
+	IsUpperCase,
 } from '../../validators/common.ts';
 import { constraintKey, validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
@@ -68,6 +75,24 @@ class BodyPayload {
 	public isDate!: string;
 	@IsDecimal()
 	public isDecimal!: string;
+
+	@IsEmpty()
+	public isEmpty!: string;
+
+	@IsLowerCase()
+	public isLowerCase!: string;
+	@IsHexColor()
+	public IsHexColor!: string;
+	@IsIP()
+	public isIP!: string;
+	@IsDivisibleBy(5)
+	public isDivisibleBy!: string;
+
+	@IsUpperCase()
+	public isUpperCase!: string;
+
+	@IsPort()
+	public isPort!: string;
 }
 
 Deno.test('Common validators errors', async (ctx) => {
@@ -90,6 +115,13 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDataURI = 'nonDataURI';
 	failingPayload.isDate = 'nonDate';
 	failingPayload.isDecimal = 'nondecimal';
+	failingPayload.isEmpty = 'nonEmpty';
+	failingPayload.isLowerCase = 'UPPERCASE';
+	failingPayload.IsHexColor = 'nonHexcolor';
+	failingPayload.isIP = '192.168.0.256';
+	failingPayload.isDivisibleBy = '7';
+	failingPayload.isUpperCase = 'lowercase';
+	failingPayload.isPort = '65536';
 
 	const errors = validateObject(failingPayload, BodyPayload);
 	await ctx.step('Contains', () => {
@@ -229,6 +261,56 @@ Deno.test('Common validators errors', async (ctx) => {
 				locale: 'en-US',
 			}],
 			property: 'isDecimal',
+		}]);
+	});
+	await ctx.step('IsEmpty', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be empty`,
+			constraints: [],
+			property: 'isEmpty',
+		}]);
+	});
+	await ctx.step('IsLowerCase', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a string in lower case`,
+			constraints: [],
+			property: 'isLowerCase',
+		}]);
+	});
+	await ctx.step('IsHexColor', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a hexcolor string`,
+			constraints: [],
+			property: 'IsHexColor',
+		}]);
+	});
+	await ctx.step('IsIP', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be an IP address`,
+			constraints: [],
+			property: 'isIP',
+		}]);
+	});
+	await ctx.step('IsDivisibleBy', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be divisible by 5`,
+			constraints: [5],
+			property: 'isDivisibleBy',
+		}]);
+	});
+
+	await ctx.step('IsUpperCase', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be an uppercase only string`,
+			constraints: [],
+			property: 'isUpperCase',
+		}]);
+	});
+	await ctx.step('IsPort', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a valid port number`,
+			constraints: [],
+			property: 'isPort',
 		}]);
 	});
 });
