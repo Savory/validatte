@@ -1,7 +1,7 @@
 import { createDecorator } from '../validate.ts';
 import { isRegex, lengthGreater, lengthGreaterOrEqual, lengthLower, lengthLowerOrEqual } from '../behaviors/string.ts';
 import { isEmail, isURL } from '../behaviors/common/mod.ts';
-import { isURLOptions } from "../behaviors/common/isURL.ts";
+import { isURLOptions } from '../behaviors/common/isURL.ts';
 
 export const LengthGreaterOrEqual = (length: number) => {
 	return createDecorator(
@@ -62,7 +62,7 @@ export const IsEmail = () => {
 	);
 };
 
-export const IsUrl = (options : isURLOptions = {}) => {
+export const IsUrl = (options: isURLOptions = {}) => {
 	return createDecorator(
 		(prop: string) => isURL(prop, options),
 		{
@@ -70,4 +70,4 @@ export const IsUrl = (options : isURLOptions = {}) => {
 			constraints: [],
 		},
 	);
-}
+};
