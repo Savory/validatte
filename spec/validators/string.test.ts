@@ -3,7 +3,7 @@ import { validateObject } from '../../validate.ts';
 import { assertArrayIncludes, assertEquals } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
 import {
 	IsEmail,
-	IsRegex,
+	IsRegex, IsUrl,
 	LengthGreater,
 	LengthGreaterOrEqual,
 	LengthLower,
@@ -28,6 +28,9 @@ class StringTest {
 
 	@IsRegex(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/)
 	regexp!: string;
+
+	@IsUrl()
+	url!: string;
 }
 
 Deno.test('Wrong values', async (ctx: TestContext) => {
@@ -38,6 +41,7 @@ Deno.test('Wrong values', async (ctx: TestContext) => {
 	wrongValueInstance.lt = 'longerthanexpectedwow';
 	wrongValueInstance.email = 'wrongemail';
 	wrongValueInstance.regexp = 'weakpassword';
+	wrongValueInstance.url = 'noturl';
 	const errors = validateObject(wrongValueInstance, StringTest);
 	await ctx.step('Greater Or Equal', () => {
 		assertArrayIncludes(errors, [
@@ -93,6 +97,15 @@ Deno.test('Wrong values', async (ctx: TestContext) => {
 			},
 		]);
 	});
+	await ctx.step('Url', () => {
+		assertArrayIncludes(errors, [
+			{
+				property: 'url',
+				errorMessage: `String is not an URL`,
+				constraints: [],
+			},
+		]);
+	});
 });
 
 Deno.test('Right values', async (ctx: TestContext) => {
@@ -104,6 +117,7 @@ Deno.test('Right values', async (ctx: TestContext) => {
 		rightValueInstance.lt = 'metoo';
 		rightValueInstance.email = 'thisemail@email.com';
 		rightValueInstance.regexp = 'erewreerwAerwer2023423!1';
+		rightValueInstance.url = 'https://www.myurl.com';
 		const errors = validateObject(rightValueInstance, StringTest);
 		assertEquals(errors, []);
 	});

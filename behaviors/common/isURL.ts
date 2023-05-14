@@ -16,7 +16,7 @@ host_balcklist - list of url not allowed (can include both string and RegExp)
 
 */
 
-interface isURLOptions {
+export interface isURLOptions {
 	protocols?: string[];
 	require_tld?: boolean;
 	require_protocol?: boolean;
