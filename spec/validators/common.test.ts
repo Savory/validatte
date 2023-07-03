@@ -11,7 +11,7 @@ import {
 	IsBase64,
 	IsBefore,
 	IsBic,
-	IsBoolean,
+	IsBooleanString,
 	IsBtcAddress,
 	IsCreditCard,
 	IsCurrency,
@@ -26,7 +26,7 @@ import {
 	IsPort,
 	IsUpperCase,
 } from '../../validators/common.ts';
-import { constraintKey, validateObject } from '../../validate.ts';
+import { validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
 import { defaultContainsOptions } from '../../behaviors/common/contains.ts';
 
@@ -58,7 +58,7 @@ class BodyPayload {
 	@IsBic()
 	public isBic!: string;
 
-	@IsBoolean()
+	@IsBooleanString()
 	public isBoolean!: string;
 
 	@IsBtcAddress()

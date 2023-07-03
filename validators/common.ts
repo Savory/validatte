@@ -84,7 +84,7 @@ export const IsBic = () =>
 		constraints: [],
 	});
 
-export const IsBoolean = () =>
+export const IsBooleanString = () =>
 	createDecorator((prop: string) => isBoolean(prop), {
 		errorMessage: 'Property must be a boolean string such as "true", "false", "0", "1"',
 		constraints: [],
