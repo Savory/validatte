@@ -39,6 +39,10 @@
       ]
     }
   },
+  "publish": {
+    "exclude": [".github", "spec", "coverage"]
+  },
+  "exports": "./mod.ts",
   "tasks": {
     "test": "deno test --coverage=coverage spec/"
   },
