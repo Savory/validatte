@@ -4,7 +4,7 @@
     "jsr:@std/assert@0.223": "0.223.0",
     "jsr:@std/fmt@0.223": "0.223.0",
     "jsr:@std/testing@0.223.0": "0.223.0",
-    "npm:awesome-phonenumber@*": "7.1.0"
+    "npm:awesome-phonenumber@7.1.0": "7.1.0"
   },
   "jsr": {
     "@std/assert@0.223.0": {
@@ -31,7 +31,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/testing@0.223.0",
-      "npm:awesome-phonenumber@*"
+      "npm:awesome-phonenumber@7.1.0"
     ]
   }
 }
