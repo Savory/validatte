@@ -2381,7 +2381,7 @@ test({
 		'Some Name <hans@m端ller.com>',
 		'Some Name <test|123@m端ller.com>',
 		'Some Name <test123+ext@gmail.com>',
-		'\'Foo Bar, Esq\'<foo@bar.com>',
+		"'Foo Bar, Esq'<foo@bar.com>",
 		'Some Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
 		'Some Middle Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
 		'Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
@@ -3993,7 +3993,7 @@ test({
 	],
 	invalid: [
 		'{ key: "value" }',
-		'{ \'key\': \'value\' }',
+		"{ 'key': 'value' }",
 		'null',
 		'1234',
 		'false',
@@ -7314,7 +7314,7 @@ test({
 		'http://10.0.0.0/',
 		'http://189.123.14.13/',
 		'http://duckduckgo.com/?q=%2F',
-		'http://foobar.com/t$-_.+!*\'(),',
+		"http://foobar.com/t$-_.+!*'(),",
 		'http://foobar.com/?foo=bar#baz=qux',
 		'http://foobar.com?foo=bar',
 		'http://foobar.com#baz=qux',
@@ -7373,7 +7373,7 @@ test({
 		'http://localhost:61500this is an invalid url!!!!',
 		'////foobar.com',
 		'http:////foobar.com',
-		'https://example.com/foo/<script>alert(\'XSS\')</script>/',
+		"https://example.com/foo/<script>alert('XSS')</script>/",
 	],
 });
 

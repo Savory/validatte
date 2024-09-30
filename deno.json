@@ -1,53 +1,47 @@
 {
-  "name": "@danet/validatte",
-  "version": "0.7.5",
-  "exports": "./mod.ts",
-  "compilerOptions": {
+	"name": "@danet/validatte",
+	"version": "0.7.5",
+	"exports": "./mod.ts",
+	"compilerOptions": {
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true
 	},
-  "lint": {
-    "files": {
-      "exclude": [
-        "./**/*.test.ts"
-      ]
-    },
-    "rules": {
-      "tags": [
-        "recommended"
-      ],
-      "include": [
-        "ban-untagged-todo"
-      ],
-      "exclude": [
-        "no-unused-vars",
-        "no-control-regex",
-        "no-prototype-builtins"
-      ]
-    }
-  },
-  "fmt": {
-    "options": {
-      "singleQuote": true,
-      "useTabs": true,
-      "lineWidth": 130
-    },
-    "files": {
-      "exclude": [
-        "coverage/",
-        "doc/"
-      ]
-    }
-  },
-  "publish": {
-    "exclude": [".github", "spec", "coverage"]
-  },
-  "exports": "./mod.ts",
-  "tasks": {
-    "test": "deno test --coverage=coverage spec/"
-  },
-  "imports": {
-    "phonenumber": "npm:awesome-phonenumber@7.1.0",
-    "@std/testing": "jsr:@std/testing@0.223.0"
-  }
+	"lint": {
+		"exclude": [
+			"./**/*.test.ts"
+		],
+		"rules": {
+			"tags": [
+				"recommended"
+			],
+			"include": [
+				"ban-untagged-todo"
+			],
+			"exclude": [
+				"no-unused-vars",
+				"no-control-regex",
+				"no-prototype-builtins"
+			]
+		}
+	},
+	"fmt": {
+		"singleQuote": true,
+		"useTabs": true,
+		"lineWidth": 130,
+		"exclude": [
+			"coverage/",
+			"doc/"
+		]
+	},
+	"publish": {
+		"exclude": [".github", "spec", "coverage"]
+	},
+	"exports": "./mod.ts",
+	"tasks": {
+		"test": "deno test --coverage=coverage spec/"
+	},
+	"imports": {
+		"phonenumber": "npm:awesome-phonenumber@7.1.0",
+		"@std/testing": "jsr:@std/testing@0.223.0"
+	}
 }
