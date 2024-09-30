@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
+import { assertEquals, assertThrows } from '@std/testing/asserts';
 import validator from './utils.ts';
 
 interface Options {

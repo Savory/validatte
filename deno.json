@@ -1,25 +1,49 @@
 {
-	"lint": {
-		"files": {
-			"exclude": ["./**/*.test.ts"]
-		},
-		"rules": {
-			"tags": ["recommended"],
-			"include": ["ban-untagged-todo"],
-			"exclude": ["no-unused-vars", "no-control-regex", "no-prototype-builtins"]
-		}
+  "name": "@danet/validatte",
+  "version": "0.7.3",
+  "exports": "./mod.ts",
+  "compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true
 	},
-	"fmt": {
-		"options": {
-			"singleQuote": true,
-			"useTabs": true,
-			"lineWidth": 130
-		},
-		"files": {
-			"exclude": ["coverage/", "doc/"]
-		}
-	},
-	"tasks": {
-		"test": "deno test --coverage=coverage spec/"
-	}
+  "lint": {
+    "files": {
+      "exclude": [
+        "./**/*.test.ts"
+      ]
+    },
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "ban-untagged-todo"
+      ],
+      "exclude": [
+        "no-unused-vars",
+        "no-control-regex",
+        "no-prototype-builtins"
+      ]
+    }
+  },
+  "fmt": {
+    "options": {
+      "singleQuote": true,
+      "useTabs": true,
+      "lineWidth": 130
+    },
+    "files": {
+      "exclude": [
+        "coverage/",
+        "doc/"
+      ]
+    }
+  },
+  "tasks": {
+    "test": "deno test --coverage=coverage spec/"
+  },
+  "imports": {
+    "phonenumber": "npm:awesome-phonenumber@7.1.0",
+    "@std/testing": "jsr:@std/testing@0.223.0"
+  }
 }

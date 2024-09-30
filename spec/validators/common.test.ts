@@ -27,7 +27,7 @@ import {
 	IsUpperCase,
 } from '../../validators/common.ts';
 import { validateObject } from '../../validate.ts';
-import { assertArrayIncludes, fail } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
+import { assertArrayIncludes, fail } from '@std/testing/asserts';
 import { defaultContainsOptions } from '../../behaviors/common/contains.ts';
 
 class BodyPayload {

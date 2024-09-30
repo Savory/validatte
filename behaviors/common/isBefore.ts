@@ -2,7 +2,7 @@ import { toDate } from './toDate.ts';
 
 export function isBefore(
 	str: string,
-	date = `${new Date()}`,
+	date: string = `${new Date()}`,
 ): boolean {
 	const comparison = toDate(date);
 	const original = toDate(str);

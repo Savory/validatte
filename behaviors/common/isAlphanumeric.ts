@@ -10,4 +10,4 @@ export function isAlphanumeric(
 	throw new Error(`Invalid locale '${locale}'`);
 }
 
-export const locales = Object.keys(alphanumeric);
+export const locales: string[] = Object.keys(alphanumeric);

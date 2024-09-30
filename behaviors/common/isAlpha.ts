@@ -10,4 +10,4 @@ export function isAlpha(
 	throw new Error(`Invalid locale '${locale}'`);
 }
 
-export const locales = Object.keys(alpha);
+export const locales: string[] = Object.keys(alpha);

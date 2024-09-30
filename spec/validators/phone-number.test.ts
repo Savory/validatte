@@ -1,4 +1,4 @@
-import { assertEquals } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
+import { assertEquals } from '@std/testing/asserts';
 import { validateObject } from '../../validate.ts';
 import { IsInternationalPhoneNumber, IsPhoneNumber } from '../../validators/phone-number.ts';
 import TestContext = Deno.TestContext;

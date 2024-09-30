@@ -1,6 +1,6 @@
 import TestContext = Deno.TestContext;
 import { validateObject } from '../../validate.ts';
-import { assertArrayIncludes, assertEquals } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
+import { assertArrayIncludes, assertEquals } from '@std/testing/asserts';
 import {
 	IsEmail,
 	IsRegex,

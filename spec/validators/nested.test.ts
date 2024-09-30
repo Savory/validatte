@@ -1,6 +1,6 @@
 import { IsString } from '../../validators/types-validators.ts';
 import { IsEmail, LengthGreaterOrEqual } from '../../validators/string.ts';
-import { assertEquals } from 'https://deno.land/std@0.135.0/testing/asserts.ts';
+import { assertEquals } from '@std/testing/asserts';
 import { validateObject } from '../../validate.ts';
 import { Nested } from '../../validators/nested.ts';
 
