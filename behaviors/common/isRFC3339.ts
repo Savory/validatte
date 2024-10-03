@@ -23,6 +23,12 @@ const fullTime = new RegExp(`${partialTime.source}${timeOffset.source}`);
 
 const rfc3339 = new RegExp(`${fullDate.source}[ tT]${fullTime.source}`);
 
+/**
+ * Checks if a given string conforms to the RFC 3339 date-time format.
+ *
+ * @param str - The string to be validated.
+ * @returns `true` if the string is a valid RFC 3339 date-time, otherwise `false`.
+ */
 export function isRFC3339(str: string): boolean {
 	return rfc3339.test(str);
 }

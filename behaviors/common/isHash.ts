@@ -14,6 +14,13 @@ const lengths: { [key: string]: number } = {
 	crc32b: 8,
 };
 
+/**
+ * Checks if a given string is a valid hash for the specified algorithm.
+ *
+ * @param str - The string to be checked.
+ * @param algorithm - The algorithm to be used for validation. This should correspond to an index in the `lengths` array.
+ * @returns `true` if the string is a valid hash for the specified algorithm, `false` otherwise.
+ */
 export function isHash(str: string, algorithm: number): boolean {
 	const hash = new RegExp(`^[a-fA-F0-9]{${lengths[algorithm]}}$`);
 	return hash.test(str);

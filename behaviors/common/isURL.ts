@@ -56,6 +56,20 @@ function checkHost(host: string, matches: (string | RegExp)[]): boolean {
 	return false;
 }
 
+/**
+ * Validates whether a given string is a valid URL based on specified options.
+ *
+ * @param url - The URL string to validate.
+ * @param options - The options to customize URL validation.
+ * @returns `true` if the URL is valid, `false` otherwise.
+ *
+ * @example
+ * ```typescript
+ * const options: isURLOptions = { require_protocol: true, protocols: ['http', 'https'] };
+ * const result = isURL('https://example.com', options);
+ * console.log(result); // true
+ * ```
+ */
 export function isURL(url: string, options: isURLOptions): boolean {
 	if (!url || url.length >= 2083 || /[\s<>]/.test(url)) {
 		return false;

@@ -44,6 +44,13 @@ const defaultISO8601Options: ISO8601Options = {
 	strict: false,
 };
 
+/**
+ * Checks if a given string is a valid ISO 8601 date.
+ *
+ * @param str - The string to be checked.
+ * @param options - Optional settings to customize the validation.
+ * @returns `true` if the string is a valid ISO 8601 date, otherwise `false`.
+ */
 export function isISO8601(
 	str: string,
 	options: ISO8601Options = defaultISO8601Options,

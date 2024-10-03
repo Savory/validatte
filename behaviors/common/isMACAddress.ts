@@ -8,6 +8,14 @@ interface isMACAddressOptions {
 	no_colons: boolean;
 }
 
+/**
+ * Checks if the given string is a valid MAC address.
+ *
+ * @param str - The string to be checked.
+ * @param options - An object containing options for validation.
+ * @param options.no_colons - If true, the function will validate MAC addresses without colons.
+ * @returns `true` if the string is a valid MAC address, `false` otherwise.
+ */
 export function isMACAddress(
 	str: string,
 	options: isMACAddressOptions,

@@ -10,6 +10,16 @@ const default_fqdn_options: { [key: string]: boolean } = {
 	allow_trailing_dot: false,
 };
 
+/**
+ * Checks if the given string is a fully qualified domain name (FQDN).
+ *
+ * @param str - The string to be checked.
+ * @param options - Configuration options for FQDN validation.
+ * @param options.allow_trailing_dot - If true, allows the FQDN to have a trailing dot.
+ * @param options.require_tld - If true, requires the FQDN to have a top-level domain (TLD).
+ * @param options.allow_underscores - If true, allows underscores in the FQDN.
+ * @returns `true` if the string is a valid FQDN, `false` otherwise.
+ */
 export function isFQDN(
 	str: string,
 	options: isFQDN = default_fqdn_options,

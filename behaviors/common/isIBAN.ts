@@ -131,6 +131,14 @@ function hasValidIbanChecksum(str: string): boolean {
 	return remainder === 1;
 }
 
+/**
+ * Checks if the provided string is a valid IBAN (International Bank Account Number).
+ *
+ * This function verifies both the format and the checksum of the IBAN.
+ *
+ * @param str - The string to be checked as an IBAN.
+ * @returns `true` if the string is a valid IBAN, `false` otherwise.
+ */
 export function isIBAN(str: string): boolean {
 	return hasValidIbanFormat(str) && hasValidIbanChecksum(str);
 }

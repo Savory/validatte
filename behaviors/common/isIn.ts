@@ -1,4 +1,11 @@
 import { toString } from './util/toString.ts';
+/**
+ * Checks if a given string is present in the provided options.
+ *
+ * @param str - The string to check for presence.
+ * @param options - The options to check against. Can be an array, an object, or any type with an `indexOf` method.
+ * @returns `true` if the string is found in the options, `false` otherwise.
+ */
 // deno-lint-ignore no-explicit-any
 export function isIn(str: string, options: any): boolean {
 	// deno-lint-ignore no-explicit-any

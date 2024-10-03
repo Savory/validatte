@@ -62,6 +62,14 @@ const patterns: { [key: string]: RegExp } = {
 
 export const locales: string[] = Object.keys(patterns);
 
+/**
+ * Validates whether a given string is a postal code for a specified locale.
+ *
+ * @param str - The string to be validated as a postal code.
+ * @param locale - The locale to validate the postal code against. If 'any', the function will check against all available locales.
+ * @returns `true` if the string is a valid postal code for the specified locale, otherwise `false`.
+ * @throws Will throw an error if the provided locale is invalid.
+ */
 export function isPostalCode(str: string, locale: string): boolean {
 	if (locale in patterns) {
 		return patterns[locale].test(str);

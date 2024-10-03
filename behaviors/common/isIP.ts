@@ -30,6 +30,14 @@
 const ipv4Maybe = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
 const ipv6Block = /^[0-9A-F]{1,4}$/i;
 
+/**
+ * Checks if a given string is a valid IP address (either IPv4 or IPv6).
+ *
+ * @param str - The string to be checked as an IP address.
+ * @param version - The IP version to check against. Can be '4', '6', or an empty string.
+ *                   If an empty string is provided, the function will check for both IPv4 and IPv6.
+ * @returns `true` if the string is a valid IP address of the specified version, `false` otherwise.
+ */
 export function isIP(
 	str: string,
 	version: string | number = '',

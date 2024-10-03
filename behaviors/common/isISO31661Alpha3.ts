@@ -253,6 +253,12 @@ const validISO31661Alpha3CountriesCodes: Array<string> = [
 	'ZWE',
 ];
 
+/**
+ * Checks if the given string is a valid ISO 3166-1 alpha-3 country code.
+ *
+ * @param str - The string to validate as an ISO 3166-1 alpha-3 country code.
+ * @returns `true` if the string is a valid ISO 3166-1 alpha-3 country code, otherwise `false`.
+ */
 export function isISO31661Alpha3(str: string): boolean {
 	return includes(validISO31661Alpha3CountriesCodes, str.toUpperCase());
 }

@@ -253,6 +253,16 @@ const validISO31661Alpha2CountriesCodes: Array<string> = [
 	'ZW',
 ];
 
+/**
+ * Checks if the given string is a valid ISO 3166-1 alpha-2 country code.
+ *
+ * ISO 3166-1 alpha-2 codes are two-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard
+ * published by the International Organization for Standardization (ISO), to represent countries, dependent territories,
+ * and special areas of geographical interest.
+ *
+ * @param str - The string to be checked.
+ * @returns `true` if the string is a valid ISO 3166-1 alpha-2 country code, otherwise `false`.
+ */
 export function isISO31661Alpha2(str: string): boolean {
 	return includes(validISO31661Alpha2CountriesCodes, str.toUpperCase());
 }

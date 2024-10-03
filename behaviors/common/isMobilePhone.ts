@@ -108,6 +108,16 @@ const defaultMobilePhoneOptions: MobilePhoneOptions = {
 	strictMode: false,
 };
 
+/**
+ * Checks if the given string is a valid mobile phone number for the specified locale.
+ *
+ * @param str - The string to be validated as a mobile phone number.
+ * @param locale - The locale or array of locales to validate against. If 'any' or falsy, it will validate against all available locales.
+ * @param options - Optional settings for validation. Defaults to `defaultMobilePhoneOptions`.
+ * @param options.strictMode - If true, the phone number must start with a '+' sign.
+ * @returns `true` if the string is a valid mobile phone number for the specified locale, otherwise `false`.
+ * @throws Will throw an error if the provided locale is invalid.
+ */
 export function isMobilePhone(
 	str: string,
 	locale: string,

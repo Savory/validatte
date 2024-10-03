@@ -2,6 +2,13 @@ const isbn10Maybe = /^(?:[0-9]{9}X|[0-9]{10})$/;
 const isbn13Maybe = /^(?:[0-9]{13})$/;
 const factor = [1, 3];
 
+/**
+ * Checks if a given string is a valid ISBN (International Standard Book Number).
+ *
+ * @param str - The string to be checked.
+ * @param version - The ISBN version to validate against (either '10' or '13'). If not provided, the function will check against both versions.
+ * @returns `true` if the string is a valid ISBN, `false` otherwise.
+ */
 export function isISBN(
 	str: string,
 	version: string | number = '',

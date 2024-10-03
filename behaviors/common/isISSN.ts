@@ -1,5 +1,14 @@
 const issn = '^\\d{4}-?\\d{3}[\\dX]$';
 
+/**
+ * Validates whether a given string is a valid ISSN (International Standard Serial Number).
+ *
+ * @param str - The string to be validated as an ISSN.
+ * @param options - Optional configuration object.
+ * @param options.require_hyphen - If true, the ISSN must include a hyphen.
+ * @param options.case_sensitive - If true, the validation will be case-sensitive.
+ * @returns A boolean indicating whether the string is a valid ISSN.
+ */
 export function isISSN(
 	str: string,
 	options: { require_hyphen?: boolean; case_sensitive?: boolean } = {},

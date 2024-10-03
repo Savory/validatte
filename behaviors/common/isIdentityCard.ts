@@ -345,6 +345,14 @@ const validators: { [key: string]: (str: string) => boolean } = {
 	},
 };
 
+/**
+ * Validates if a given string is an identity card number for a specified locale.
+ *
+ * @param str - The string to be validated as an identity card number.
+ * @param locale - The locale to validate against. If 'any', it will check against all available locales.
+ * @returns `true` if the string is a valid identity card number for the specified locale, otherwise `false`.
+ * @throws Will throw an error if the provided locale is not supported.
+ */
 export function isIdentityCard(str: string, locale: string): boolean {
 	if (locale in validators) {
 		return validators[locale](str);

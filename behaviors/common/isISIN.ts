@@ -1,5 +1,14 @@
 const isin = /^[A-Z]{2}[0-9A-Z]{9}[0-9]$/;
 
+/**
+ * Checks if the given string is a valid ISIN (International Securities Identification Number).
+ *
+ * The function first verifies the format of the ISIN using a regular expression.
+ * Then, it calculates the checksum using the Luhn algorithm to ensure the ISIN is valid.
+ *
+ * @param str - The string to be checked as an ISIN.
+ * @returns `true` if the string is a valid ISIN, `false` otherwise.
+ */
 export function isISIN(str: string): boolean {
 	if (!isin.test(str)) {
 		return false;
