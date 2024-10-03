@@ -4,6 +4,22 @@ const validAttribute = /^[a-z\-]+=[a-z0-9\-]+$/i;
 
 const validData = /^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@\/\?%\s]*$/i;
 
+/**
+ * Checks if a given string is a valid Data URI.
+ *
+ * A Data URI typically consists of a scheme (`data:`), an optional media type,
+ * optional attributes (such as `base64`), and the actual data.
+ *
+ * This function performs the following checks:
+ * - The string must contain at least one comma.
+ * - The scheme must start with `data:`.
+ * - The media type, if present, must be valid.
+ * - Each attribute must be valid, with the last attribute optionally being `base64`.
+ * - The data part must be valid.
+ *
+ * @param str - The string to be checked.
+ * @returns `true` if the string is a valid Data URI, `false` otherwise.
+ */
 export function isDataURI(str: string): boolean {
 	const data: string[] = str.split(',');
 	if (data.length < 2) {

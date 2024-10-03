@@ -96,6 +96,13 @@ export const defaultCurrencyOptions: CurrencyOptions = {
 	allow_space_after_digits: false,
 };
 
+/**
+ * Checks if a given string is a valid currency format based on the provided options.
+ *
+ * @param str - The string to be validated as currency.
+ * @param options - Optional. The configuration options for currency validation. Defaults to `defaultCurrencyOptions`.
+ * @returns `true` if the string is a valid currency format, otherwise `false`.
+ */
 export function isCurrency(
 	str: string,
 	options: CurrencyOptions = defaultCurrencyOptions,

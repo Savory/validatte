@@ -19,6 +19,17 @@ export const defaultDecimalOptions = {
 
 const blacklist = ['', '-', '+'];
 
+/**
+ * Checks if the given string is a valid decimal number based on the provided options.
+ *
+ * @param str - The string to be validated as a decimal number.
+ * @param options - An object containing validation options.
+ * @param options.force_decimal - If true, the string must contain a decimal point.
+ * @param options.decimal_digits - A string representing the allowed number of decimal digits.
+ * @param options.locale - The locale to be used for decimal validation.
+ * @returns A boolean indicating whether the string is a valid decimal number.
+ * @throws Will throw an error if the provided locale is invalid.
+ */
 export function isDecimal(str: string, options: { force_decimal: boolean; decimal_digits: string; locale: string }): boolean {
 	options = merge(options, defaultDecimalOptions);
 	if (options.locale in decimal) {

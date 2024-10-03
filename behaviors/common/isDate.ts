@@ -12,6 +12,13 @@ function zip(date: Array<string>, format: Array<string>): Array<Array<string>> {
 	return zippedArr;
 }
 
+/**
+ * Checks if the given input string is a valid date according to the specified format.
+ *
+ * @param input - The date string to validate.
+ * @param format - The format to validate against, default is 'YYYY/MM/DD'.
+ * @returns `true` if the input string is a valid date according to the specified format, otherwise `false`.
+ */
 export function isDate(
 	input: string,
 	format = 'YYYY/MM/DD',

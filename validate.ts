@@ -8,6 +8,9 @@
 import { Constructor, ValidateFunction, ValidateFunctionOptions, ValidateInfo, ValidateSymbol, Validator } from './types.ts';
 import { createErrorMessage, formatErrors, ValidationError } from './errors.ts';
 
+/**
+ * Will be replace by constraint in error message at runtime
+ */
 export const constraintKey: string = `$constraint`;
 
 /**

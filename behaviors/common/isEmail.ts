@@ -75,6 +75,37 @@ function validateDisplayName(display_name: string) {
 	return true;
 }
 
+/**
+ * Validates whether a given string is a valid email address.
+ *
+ * @param str - The string to validate as an email address.
+ * @param options - Optional configuration for email validation.
+ * @returns `true` if the string is a valid email address, `false` otherwise.
+ *
+ * @remarks
+ * The function supports various options to customize the validation process, such as:
+ * - `require_display_name`: Requires the email to have a display name.
+ * - `allow_display_name`: Allows the email to have a display name.
+ * - `ignore_max_length`: Ignores the maximum length restriction for the email.
+ * - `domain_specific_validation`: Enables domain-specific validation for certain domains like Gmail.
+ * - `require_tld`: Requires the domain to have a top-level domain.
+ * - `allow_ip_domain`: Allows the domain to be an IP address.
+ * - `allow_utf8_local_part`: Allows the local part of the email to contain UTF-8 characters.
+ *
+ * The function performs several checks, including:
+ * - Validating the display name if required.
+ * - Ensuring the email length does not exceed the maximum allowed length.
+ * - Splitting the email into user and domain parts and validating each part.
+ * - Performing domain-specific checks for Gmail addresses.
+ * - Validating the domain as a fully qualified domain name (FQDN) or IP address.
+ * - Validating the local part of the email based on the specified pattern.
+ *
+ * @example
+ * ```typescript
+ * const isValid = isEmail('example@gmail.com');
+ * console.log(isValid); // true
+ * ```
+ */
 export function isEmail(str: string, options: isEmailOptions = {}): boolean {
 	options = merge(options, defaultEmailOptions);
 

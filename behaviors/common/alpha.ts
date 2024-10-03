@@ -1,3 +1,39 @@
+/**
+ * A collection of regular expressions for validating alphabetic characters
+ * in various languages and locales.
+ *
+ * The keys represent the locale codes, and the values are the corresponding
+ * regular expressions that match alphabetic characters for that locale.
+ *
+ * Supported locales include:
+ * - Arabic (`ar`)
+ * - Bulgarian (`bg-BG`)
+ * - Czech (`cs-CZ`)
+ * - Danish (`da-DK`)
+ * - German (`de-DE`)
+ * - Greek (`el-GR`)
+ * - English (`en-US`)
+ * - Spanish (`es-ES`)
+ * - Persian (`fa-IR`)
+ * - French (`fr-FR`)
+ * - Hebrew (`he`)
+ * - Hungarian (`hu-HU`)
+ * - Italian (`it-IT`)
+ * - Kurdish (`ku-IQ`)
+ * - Norwegian Bokmål (`nb-NO`)
+ * - Dutch (`nl-NL`)
+ * - Norwegian Nynorsk (`nn-NO`)
+ * - Polish (`pl-PL`)
+ * - Portuguese (`pt-PT`)
+ * - Russian (`ru-RU`)
+ * - Slovak (`sk-SK`)
+ * - Slovenian (`sl-SI`)
+ * - Serbian Cyrillic (`sr-RS`)
+ * - Serbian Latin (`sr-RS@latin`)
+ * - Swedish (`sv-SE`)
+ * - Turkish (`tr-TR`)
+ * - Ukrainian (`uk-UA`)
+ */
 export const alpha: { [key: string]: RegExp } = {
 	ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]+$/,
 	'bg-BG': /^[А-Я]+$/i,
@@ -28,6 +64,41 @@ export const alpha: { [key: string]: RegExp } = {
 	'uk-UA': /^[А-ЩЬЮЯЄIЇҐі]+$/i,
 };
 
+/**
+ * A collection of regular expressions for validating alphanumeric characters
+ * across various locales. Each key represents a locale identifier, and the
+ * corresponding value is a regular expression that matches alphanumeric
+ * characters specific to that locale.
+ *
+ * Supported locales include:
+ * - 'en-US': English (United States)
+ * - 'bg-BG': Bulgarian
+ * - 'cs-CZ': Czech
+ * - 'da-DK': Danish
+ * - 'de-DE': German
+ * - 'el-GR': Greek
+ * - 'es-ES': Spanish
+ * - 'fr-FR': French
+ * - 'it-IT': Italian
+ * - 'hu-HU': Hungarian
+ * - 'nb-NO': Norwegian Bokmål
+ * - 'nl-NL': Dutch
+ * - 'nn-NO': Norwegian Nynorsk
+ * - 'pl-PL': Polish
+ * - 'pt-PT': Portuguese
+ * - 'ru-RU': Russian
+ * - 'sl-SI': Slovenian
+ * - 'sk-SK': Slovak
+ * - 'sr-RS@latin': Serbian (Latin script)
+ * - 'sr-RS': Serbian (Cyrillic script)
+ * - 'sv-SE': Swedish
+ * - 'tr-TR': Turkish
+ * - 'uk-UA': Ukrainian
+ * - 'ku-IQ': Kurdish (Iraq)
+ * - 'ar': Arabic
+ * - 'he': Hebrew
+ * - 'fa-IR': Persian (Iran)
+ */
 export const alphanumeric: { [key: string]: RegExp } = {
 	'en-US': /^[0-9A-Z]+$/i,
 	'bg-BG': /^[0-9А-Я]+$/i,
@@ -58,11 +129,34 @@ export const alphanumeric: { [key: string]: RegExp } = {
 	'fa-IR': /^['0-9آابپتثجچهخدذرزژسشصضطظعغفقکگلمنوهی۱۲۳۴۵۶۷۸۹۰']+$/i,
 };
 
+/**
+ * An object that maps locale identifiers to their corresponding decimal separator symbols.
+ *
+ * @example
+ * ```typescript
+ * import { decimal } from './alpha';
+ *
+ * console.log(decimal['en-US']); // Output: '.'
+ * console.log(decimal['ar']);    // Output: '٫'
+ * ```
+ */
 export const decimal: { [key: string]: string } = {
 	'en-US': '.',
 	ar: '٫',
 };
 
+/**
+ * An array of strings representing English-speaking locales.
+ *
+ * The locales included are:
+ * - 'AU' (Australia)
+ * - 'GB' (United Kingdom)
+ * - 'HK' (Hong Kong)
+ * - 'IN' (India)
+ * - 'NZ' (New Zealand)
+ * - 'ZA' (South Africa)
+ * - 'ZM' (Zambia)
+ */
 export const englishLocales: Array<string> = [
 	'AU',
 	'GB',
@@ -81,6 +175,28 @@ for (let locale: string, i = 0; i < englishLocales.length; i++) {
 }
 
 // Source: http://www.localeplanet.com/java/
+/**
+ * An array of strings representing the locales for Arabic-speaking countries.
+ * http://www.localeplanet.com/java/
+ * The locales included are:
+ * - AE: United Arab Emirates
+ * - BH: Bahrain
+ * - DZ: Algeria
+ * - EG: Egypt
+ * - IQ: Iraq
+ * - JO: Jordan
+ * - KW: Kuwait
+ * - LB: Lebanon
+ * - LY: Libya
+ * - MA: Morocco
+ * - QM: Qatar
+ * - QA: Qatar
+ * - SA: Saudi Arabia
+ * - SD: Sudan
+ * - SY: Syria
+ * - TN: Tunisia
+ * - YE: Yemen
+ */
 export const arabicLocales: Array<string> = [
 	'AE',
 	'BH',
@@ -108,8 +224,28 @@ for (let locale: string, i = 0; i < arabicLocales.length; i++) {
 	decimal[locale] = decimal.ar;
 }
 
-// Source: https://en.wikipedia.org/wiki/Decimal_mark
+/**
+ * An array of locale strings that use dot as the decimal separator.
+ * Source: https://en.wikipedia.org/wiki/Decimal_mark
+ * This array includes the following locales:
+ * - ar-EG: Arabic (Egypt)
+ * - ar-LB: Arabic (Lebanon)
+ * - ar-LY: Arabic (Libya)
+ */
 export const dotDecimal: Array<string> = ['ar-EG', 'ar-LB', 'ar-LY'];
+/**
+ * An array of locale strings that use a comma as the decimal separator.
+ *
+ * This array includes locales from various regions and languages where
+ * the comma is used instead of a period for decimal separation.
+ *
+ * Example locales:
+ * - 'de-DE' for German (Germany)
+ * - 'fr-FR' for French (France)
+ * - 'es-ES' for Spanish (Spain)
+ *
+ * @constant {Array<string>} commaDecimal
+ */
 export const commaDecimal: Array<string> = [
 	'bg-BG',
 	'cs-CZ',

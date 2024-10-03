@@ -11,6 +11,13 @@ const defaultIsBase64Options: IsBase64Options = {
 	urlSafe: false,
 };
 
+/**
+ * Checks if a given string is a valid Base64 encoded string.
+ *
+ * @param str - The string to be checked.
+ * @param options - Optional settings to customize the validation.
+ * @returns `true` if the string is a valid Base64 encoded string, `false` otherwise.
+ */
 export function isBase64(
 	str: string,
 	options: IsBase64Options = defaultIsBase64Options,

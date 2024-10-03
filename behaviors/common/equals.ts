@@ -10,6 +10,14 @@ const defaultEqualsOptions: EqualsOptions = {
 	ignoreCase: false,
 };
 
+/**
+ * Compares two strings for equality with optional configurations.
+ *
+ * @param str1 - The first string to compare.
+ * @param str2 - The second string to compare.
+ * @param options - Optional configuration for comparison.
+ * @returns `true` if the strings are considered equal based on the options, otherwise `false`.
+ */
 export function equals(
 	str1: string,
 	str2: string,
