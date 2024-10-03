@@ -60,7 +60,7 @@ const patterns: { [key: string]: RegExp } = {
 	ZM: fiveDigit,
 };
 
-export const locales = Object.keys(patterns);
+export const locales: string[] = Object.keys(patterns);
 
 export function isPostalCode(str: string, locale: string): boolean {
 	if (locale in patterns) {

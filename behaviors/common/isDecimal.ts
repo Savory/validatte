@@ -19,7 +19,7 @@ export const defaultDecimalOptions = {
 
 const blacklist = ['', '-', '+'];
 
-export function isDecimal(str: string, options: { force_decimal: boolean; decimal_digits: string; locale: string }) {
+export function isDecimal(str: string, options: { force_decimal: boolean; decimal_digits: string; locale: string }): boolean {
 	options = merge(options, defaultDecimalOptions);
 	if (options.locale in decimal) {
 		return !includes(blacklist, str.replace(/ /g, '')) &&

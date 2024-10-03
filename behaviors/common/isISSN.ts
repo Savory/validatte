@@ -3,7 +3,7 @@ const issn = '^\\d{4}-?\\d{3}[\\dX]$';
 export function isISSN(
 	str: string,
 	options: { require_hyphen?: boolean; case_sensitive?: boolean } = {},
-) {
+): boolean {
 	let testIssn: string | RegExp = issn;
 	testIssn = options.require_hyphen ? testIssn.replace('?', '') : testIssn;
 	testIssn = options.case_sensitive ? new RegExp(testIssn) : new RegExp(testIssn, 'i');

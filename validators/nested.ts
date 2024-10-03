@@ -6,7 +6,7 @@ import { Constructor } from '../types.ts';
  *
  * @param expectedClass - The constructor of the class that the property should be an instance of.
  */
-export const Nested = (expectedClass: Constructor) => {
+export function Nested(expectedClass: Constructor): PropertyDecorator {
 	return createDecorator(
 		(prop: string) => {
 			const errors = validateObject(prop, expectedClass);

@@ -1,4 +1,4 @@
-import { constraintKey, createDecorator, createValidator } from '../validate.ts';
+import { constraintKey, createDecorator } from '../validate.ts';
 import { greater, greaterOrEqual, lower, lowerOrEqual } from '../behaviors/number.ts';
 
 /**
@@ -6,7 +6,7 @@ import { greater, greaterOrEqual, lower, lowerOrEqual } from '../behaviors/numbe
  *
  * @param min - The minimum value that the number should be greater than or equal to.
  */
-export const GreaterOrEqual = (min: number) => {
+export function GreaterOrEqual(min: number): PropertyDecorator {
 	return createDecorator(
 		(prop: number) => greaterOrEqual(prop, min),
 		{
@@ -20,7 +20,7 @@ export const GreaterOrEqual = (min: number) => {
  *
  * @param min - The minimum value that the number should be greater than or equal to.
  */
-export const Greater = (min: number) => {
+export function Greater(min: number): PropertyDecorator {
 	return createDecorator(
 		(prop: number) => greater(prop, min),
 		{
@@ -34,7 +34,7 @@ export const Greater = (min: number) => {
  *
  * @param max - The maximum value that the number should be greater than or equal to.
  */
-export const LowerOrEqual = (max: number) => {
+export function LowerOrEqual(max: number): PropertyDecorator {
 	return createDecorator(
 		(prop: number) => lowerOrEqual(prop, max),
 		{
@@ -48,7 +48,7 @@ export const LowerOrEqual = (max: number) => {
  *
  * @param max - The maximum value that the number should be greater than or equal to.
  */
-export const Lower = (max: number) => {
+export function Lower(max: number): PropertyDecorator {
 	return createDecorator(
 		(prop: number) => lower(prop, max),
 		{

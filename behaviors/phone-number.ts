@@ -1,6 +1,6 @@
 import { parsePhoneNumber } from '../deps.ts';
 
-export const isPhoneNumber = (prop: string, locale?: string) => {
+export function isPhoneNumber(prop: string, locale?: string): boolean {
 	const pn = parsePhoneNumber(prop, { regionCode: locale });
 	return pn.valid;
 };

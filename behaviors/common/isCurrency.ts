@@ -99,7 +99,7 @@ export const defaultCurrencyOptions: CurrencyOptions = {
 export function isCurrency(
 	str: string,
 	options: CurrencyOptions = defaultCurrencyOptions,
-) {
+): boolean {
 	options = merge(options, defaultCurrencyOptions);
 	return currencyRegex(options).test(str);
 }

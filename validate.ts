@@ -8,7 +8,7 @@
 import { Constructor, ValidateFunction, ValidateFunctionOptions, ValidateInfo, ValidateSymbol, Validator } from './types.ts';
 import { createErrorMessage, formatErrors, ValidationError } from './errors.ts';
 
-export const constraintKey = `$constraint`;
+export const constraintKey: string = `$constraint`;
 
 /**
  * Creates a property decorator that attaches validation logic to a class property.
@@ -122,12 +122,12 @@ export const validateObject = <T extends Constructor>(
  * console.log(isString('hello')); // true
  * console.log(isString(123)); // false
  */
-export const createTypeValidator = (typeName: string) =>
-	createValidator(() => {
+export function createTypeValidator(typeName: string): () => PropertyDecorator {
+	return createValidator(() => {
 		// deno-lint-ignore valid-typeof
 		return (prop) => typeof prop === typeName;
 	}, `Property must be a ${typeName}`);
-
+}
 /**
  * Creates a validator decorator function.
  *
@@ -136,10 +136,10 @@ export const createTypeValidator = (typeName: string) =>
  * @param errorMessage - A string representing the error message to be used if validation fails.
  * @returns A function that takes arguments of type `T` and returns a decorator created by `createDecorator`.
  */
-export const createValidator = <T extends Array<any>>(
+export function createValidator<T extends Array<any>>(
 	validatorFunction: (...args: T) => ValidateFunction,
 	errorMessage: string,
-) => {
+): (...args: T) => PropertyDecorator {
 	return (...args: T) => {
 		return createDecorator(validatorFunction(...args), {
 			errorMessage,

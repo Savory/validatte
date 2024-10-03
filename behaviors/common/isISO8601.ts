@@ -47,7 +47,7 @@ const defaultISO8601Options: ISO8601Options = {
 export function isISO8601(
 	str: string,
 	options: ISO8601Options = defaultISO8601Options,
-) {
+): boolean {
 	const check = iso8601.test(str);
 	if (!options.strict) return check;
 	if (check && options.strict) return isValidDate(str);

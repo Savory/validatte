@@ -1,5 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 
+import { DecoratorFunction } from '../decorator-function.ts';
 import { createTypeValidator, createValidator } from '../validate.ts';
 
 /**
@@ -16,7 +17,7 @@ import { createTypeValidator, createValidator } from '../validate.ts';
  * }
  * ```
  */
-export const IsString = createTypeValidator('string');
+export const IsString: DecoratorFunction = createTypeValidator('string');
 /**
  * Validates if the target property is of type number.
  *
@@ -31,7 +32,7 @@ export const IsString = createTypeValidator('string');
  * }
  * ```
  */
-export const IsNumber = createTypeValidator('number');
+export const IsNumber: DecoratorFunction = createTypeValidator('number');
 /**
  * Validates if the target property is of type big int.
  *
@@ -46,7 +47,7 @@ export const IsNumber = createTypeValidator('number');
  * }
  * ```
  */
-export const IsBigint = createTypeValidator('bigint');
+export const IsBigint: DecoratorFunction = createTypeValidator('bigint');
 /**
  * Validates if the target property is of type boolean.
  *
@@ -61,7 +62,7 @@ export const IsBigint = createTypeValidator('bigint');
  * }
  * ```
  */
-export const IsBoolean = createTypeValidator('boolean');
+export const IsBoolean: DecoratorFunction = createTypeValidator('boolean');
 /**
  * Validates if the target property is a function.
  *
@@ -76,7 +77,7 @@ export const IsBoolean = createTypeValidator('boolean');
  * }
  * ```
  */
-export const IsFunction = createTypeValidator('function');
+export const IsFunction: DecoratorFunction = createTypeValidator('function');
 /**
  * Validates if the target property is an object.
  *
@@ -91,7 +92,7 @@ export const IsFunction = createTypeValidator('function');
  * }
  * ```
  */
-export const IsObject = createTypeValidator('object');
+export const IsObject: DecoratorFunction = createTypeValidator('object');
 /**
  * Validates if the target property is a symbol.
  *
@@ -106,7 +107,7 @@ export const IsObject = createTypeValidator('object');
  * }
  * ```
  */
-export const IsSymbol = createTypeValidator('symbol');
+export const IsSymbol: DecoratorFunction = createTypeValidator('symbol');
 /**
  * Validates if the target property is undefined.
  *
@@ -121,7 +122,7 @@ export const IsSymbol = createTypeValidator('symbol');
  * }
  * ```
  */
-export const IsUndefined = createTypeValidator('undefined');
+export const IsUndefined: DecoratorFunction = createTypeValidator('undefined');
 /**
  * Validates if the target property is an array.
  *
@@ -136,4 +137,4 @@ export const IsUndefined = createTypeValidator('undefined');
  * }
  * ```
  */
-export const IsArray = createValidator(() => (prop: any) => Array.isArray(prop), 'Property is not an array');
+export const IsArray: DecoratorFunction = createValidator(() => (prop: any) => Array.isArray(prop), 'Property is not an array');

@@ -1,4 +1,4 @@
-export function isWhitelisted(str: string, chars: string) {
+export function isWhitelisted(str: string, chars: string): boolean {
 	for (let i = str.length - 1; i >= 0; i--) {
 		if (chars.indexOf(str[i]) === -1) {
 			return false;

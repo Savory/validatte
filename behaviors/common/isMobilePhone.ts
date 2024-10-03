@@ -146,4 +146,4 @@ export function isMobilePhone(
 	throw new Error(`Invalid locale '${locale}'`);
 }
 
-export const locales = Object.keys(phones);
+export const locales: string[] = Object.keys(phones);

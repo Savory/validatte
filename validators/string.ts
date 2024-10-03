@@ -2,6 +2,9 @@ import { createDecorator } from '../validate.ts';
 import { isRegex, lengthGreater, lengthGreaterOrEqual, lengthLower, lengthLowerOrEqual } from '../behaviors/string.ts';
 import { isEmail, isURL } from '../behaviors/common/mod.ts';
 import { isURLOptions } from '../behaviors/common/isURL.ts';
+import { DecoratorFunction } from '../decorator-function.ts';
+
+type StringDecoratorFunction = (length: number) => PropertyDecorator;
 
 /**
  * Validates if the length of a string property is greater than or equal to the specified length.
@@ -17,7 +20,7 @@ import { isURLOptions } from '../behaviors/common/isURL.ts';
  * }
  * ```
  */
-export const LengthGreaterOrEqual = (length: number) => {
+export const LengthGreaterOrEqual: StringDecoratorFunction = (length: number) => {
 	return createDecorator(
 		(prop: string) => lengthGreaterOrEqual(prop, length),
 		{
@@ -40,7 +43,7 @@ export const LengthGreaterOrEqual = (length: number) => {
  * }
  * ```
  */
-export const LengthGreater = (length: number) => {
+export const LengthGreater: StringDecoratorFunction = (length: number) => {
 	return createDecorator(
 		(prop: string) => lengthGreater(prop, length),
 		{
@@ -64,7 +67,7 @@ export const LengthGreater = (length: number) => {
  * }
  * ```
  */
-export const LengthLowerOrEqual = (length: number) => {
+export const LengthLowerOrEqual: StringDecoratorFunction = (length: number) => {
 	return createDecorator(
 		(prop: string) => lengthLowerOrEqual(prop, length),
 		{
@@ -87,7 +90,7 @@ export const LengthLowerOrEqual = (length: number) => {
  * }
  * ```
  */
-export const LengthLower = (length: number) => {
+export const LengthLower: StringDecoratorFunction = (length: number) => {
 	return createDecorator(
 		(prop: string) => lengthLower(prop, length),
 		{
@@ -111,7 +114,7 @@ export const LengthLower = (length: number) => {
  * }
  * ```
  */
-export const IsRegex = (regex: RegExp) => {
+export const IsRegex: (regex: RegExp) => PropertyDecorator = (regex: RegExp) => {
 	return createDecorator(
 		(prop: string) => isRegex(prop, regex),
 		{
@@ -126,7 +129,7 @@ export const IsRegex = (regex: RegExp) => {
  *
  * @returns A decorator function that validates if the property is an email.
  */
-export const IsEmail = () => {
+export const IsEmail: DecoratorFunction = () => {
 	return createDecorator(
 		(prop: string) => isEmail(prop),
 		{
@@ -142,7 +145,7 @@ export const IsEmail = () => {
  * @param options - Optional configuration for URL validation.
  * @returns A decorator function that validates if the property is a URL.
  */
-export const IsUrl = (options: isURLOptions = {}) => {
+export const IsUrl: (options?: isURLOptions) => PropertyDecorator = (options: isURLOptions = {}) => {
 	return createDecorator(
 		(prop: string) => isURL(prop, options),
 		{
