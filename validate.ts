@@ -16,7 +16,6 @@ export const constraintKey = `$constraint`;
  * @param validatorFunction - The function that performs the validation.
  * @param validatorOption - Options to be passed to the validator function.
  * @returns A property decorator function.
- *
  */
 export const createDecorator = (
 	validatorFunction: ValidateFunction,
