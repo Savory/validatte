@@ -1,6 +1,11 @@
 import { constraintKey, createDecorator } from '../validate.ts';
 import { isPhoneNumber } from '../behaviors/phone-number.ts';
 
+/**
+ * Checks if a string is a valid phone number for a given locale.
+ *
+ * @param locale - Optional locale string to specify the phone number format
+ */
 export const IsPhoneNumber = (locale?: string) => {
 	return createDecorator(
 		(prop: string) => isPhoneNumber(prop, locale),
@@ -11,6 +16,17 @@ export const IsPhoneNumber = (locale?: string) => {
 	);
 };
 
+/**
+ * Validates if a string is an international phone number.
+ *
+ * @example
+ * ```typescript
+ * class User {
+ *   @IsInternationalPhoneNumber()
+ *   phoneNumber: string;
+ * }
+ * ```
+ */
 export const IsInternationalPhoneNumber = () => {
 	return createDecorator(
 		(prop: string) => isPhoneNumber(prop),

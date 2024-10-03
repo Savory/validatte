@@ -1,9 +1,15 @@
 import { constraintKey, createDecorator, validateObject } from '../validate.ts';
 import { Constructor } from '../types.ts';
 
+/**
+ * Validates if a property is an instance of the expected class.
+ *
+ * @param expectedClass - The constructor of the class that the property should be an instance of.
+ *
+ */
 export const Nested = (expectedClass: Constructor) => {
 	return createDecorator(
-		(prop: number) => {
+		(prop: string) => {
 			const errors = validateObject(prop, expectedClass);
 			if (errors) {
 				throw errors;
@@ -11,7 +17,7 @@ export const Nested = (expectedClass: Constructor) => {
 			return true;
 		},
 		{
-			errorMessage: `Number must be lower than ${constraintKey}1`,
+			errorMessage: `Object should be  than ${constraintKey}1`,
 			constraints: [],
 		},
 	);

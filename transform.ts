@@ -1,3 +1,8 @@
+/**
+ * @module
+ * Helper functions to transform plain object to class and vice versa
+ */
+
 export const plainToClass = <
 	T extends abstract new (...args: unknown[]) => unknown,
 >(

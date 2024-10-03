@@ -1,3 +1,8 @@
+/**
+ * @module
+ * All useful types for validatte
+ */
+
 export const ValidateSymbol = Symbol('validator');
 
 // deno-lint-ignore no-explicit-any
