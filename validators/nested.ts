@@ -20,4 +20,4 @@ export function Nested(expectedClass: Constructor): PropertyDecorator {
 			constraints: [],
 		},
 	);
-};
+}

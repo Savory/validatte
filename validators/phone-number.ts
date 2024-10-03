@@ -15,7 +15,7 @@ export function IsPhoneNumber(locale?: string): PropertyDecorator {
 			constraints: [locale],
 		},
 	);
-};
+}
 
 /**
  * Validates if a string is an international phone number.

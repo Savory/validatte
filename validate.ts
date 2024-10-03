@@ -146,4 +146,4 @@ export function createValidator<T extends Array<any>>(
 			constraints: [...args],
 		});
 	};
-};
+}

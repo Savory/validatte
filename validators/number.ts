@@ -14,7 +14,7 @@ export function GreaterOrEqual(min: number): PropertyDecorator {
 			constraints: [min],
 		},
 	);
-};
+}
 /**
  * Checks if a number is greater than to a specified minimum value.
  *
@@ -28,7 +28,7 @@ export function Greater(min: number): PropertyDecorator {
 			constraints: [min],
 		},
 	);
-};
+}
 /**
  * Checks if a number is lower than or equal to a specified minimum value.
  *
@@ -42,7 +42,7 @@ export function LowerOrEqual(max: number): PropertyDecorator {
 			constraints: [max],
 		},
 	);
-};
+}
 /**
  * Checks if a number is lower than a specified minimum value.
  *
@@ -56,4 +56,4 @@ export function Lower(max: number): PropertyDecorator {
 			constraints: [max],
 		},
 	);
-};
+}
