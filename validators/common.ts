@@ -19,6 +19,7 @@ import {
 	isDivisibleBy,
 	isEmpty,
 	isHexColor,
+	isHexadecimal,
 	isIP,
 	isLowerCase,
 	isPort,
@@ -218,6 +219,15 @@ export function IsLowerCase(): PropertyDecorator {
 export function IsHexColor(): PropertyDecorator {
 	return createDecorator((prop: string) => isHexColor(prop), {
 		errorMessage: 'Property must be a hexcolor string',
+		constraints: [],
+	});
+}
+/**
+ * Decorator that checks if the property is a hexadecimal numberd.
+ */
+export function IsHexadecimal(): PropertyDecorator {
+	return createDecorator((prop: string) => isHexadecimal(prop), {
+		errorMessage: 'Property must be a Hexadecimal',
 		constraints: [],
 	});
 }
