@@ -30,7 +30,7 @@ export interface isURLOptions {
 	disallow_auth?: boolean;
 }
 
-const defaultURLOptions: isURLOptions = {
+export const defaultURLOptions: isURLOptions = {
 	protocols: ['http', 'https', 'ftp'],
 	require_tld: true,
 	require_protocol: false,
