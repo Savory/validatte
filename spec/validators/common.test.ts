@@ -21,12 +21,14 @@ import {
 	IsDivisibleBy,
 	IsEmpty,
 	IsFullWidth,
+	IsHalfWidth,
 	IsHexadecimal,
 	IsHexColor,
 	IsIP,
 	IsLowerCase,
 	IsPort,
 	IsUpperCase,
+	IsURL,
 } from '../../validators/common.ts';
 import { validateObject } from '../../validate.ts';
 import { assertArrayIncludes, fail } from '@std/testing/asserts';
@@ -85,6 +87,8 @@ class BodyPayload {
 
 	@IsLowerCase()
 	public isLowerCase!: string;
+	@IsHalfWidth()
+	public isHalfWidth!: string;
 	@IsHexColor()
 	public IsHexColor!: string;
 	@IsHexadecimal()
@@ -96,6 +100,9 @@ class BodyPayload {
 
 	@IsUpperCase()
 	public isUpperCase!: string;
+
+	@IsURL()
+	public isURL!: string;
 
 	@IsPort()
 	public isPort!: string;
@@ -124,11 +131,13 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isEmpty = 'nonEmpty';
 	failingPayload.isFullWidth = 'hello';
 	failingPayload.isLowerCase = 'UPPERCASE';
+	failingPayload.isHalfWidth = 'Ｈｅｌｌｏ';
 	failingPayload.IsHexColor = 'nonHexcolor';
 	failingPayload.isHexadecimal = 'GG';
 	failingPayload.isIP = '192.168.0.256';
 	failingPayload.isDivisibleBy = '7';
 	failingPayload.isUpperCase = 'lowercase';
+	failingPayload.isURL = 'https://i have a.space';
 	failingPayload.isPort = '65536';
 
 	const errors = validateObject(failingPayload, BodyPayload);
@@ -292,6 +301,13 @@ Deno.test('Common validators errors', async (ctx) => {
 			property: 'isLowerCase',
 		}]);
 	});
+	await ctx.step('IsHalfWidth', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a half-width string`,
+			constraints: [],
+			property: 'isHalfWidth',
+		}]);
+	});
 	await ctx.step('IsHexColor', () => {
 		assertArrayIncludes(errors, [{
 			errorMessage: `Property must be a hexcolor string`,
@@ -326,6 +342,14 @@ Deno.test('Common validators errors', async (ctx) => {
 			errorMessage: `Property must be an uppercase only string`,
 			constraints: [],
 			property: 'isUpperCase',
+		}]);
+	});
+
+	await ctx.step('IsURL', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be an valid URL`,
+			constraints: [],
+			property: 'isURL',
 		}]);
 	});
 	await ctx.step('IsPort', () => {
