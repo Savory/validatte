@@ -20,6 +20,7 @@ import {
 	IsDecimal,
 	IsDivisibleBy,
 	IsEmpty,
+	IsHalfWidth,
 	IsHexadecimal,
 	IsHexColor,
 	IsIP,
@@ -83,6 +84,8 @@ class BodyPayload {
 
 	@IsLowerCase()
 	public isLowerCase!: string;
+	@IsHalfWidth()
+	public isHalfWidth!: string;
 	@IsHexColor()
 	public IsHexColor!: string;
 	@IsHexadecimal()
@@ -124,6 +127,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDecimal = 'nondecimal';
 	failingPayload.isEmpty = 'nonEmpty';
 	failingPayload.isLowerCase = 'UPPERCASE';
+	failingPayload.isHalfWidth = 'Ｈｅｌｌｏ';
 	failingPayload.IsHexColor = 'nonHexcolor';
 	failingPayload.isHexadecimal = 'GG';
 	failingPayload.isIP = '192.168.0.256';
@@ -284,6 +288,13 @@ Deno.test('Common validators errors', async (ctx) => {
 			errorMessage: `Property must be a string in lower case`,
 			constraints: [],
 			property: 'isLowerCase',
+		}]);
+	});
+	await ctx.step('IsHalfWidth', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a half-width string`,
+			constraints: [],
+			property: 'isHalfWidth',
 		}]);
 	});
 	await ctx.step('IsHexColor', () => {

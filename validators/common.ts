@@ -18,6 +18,7 @@ import {
 	isDecimal,
 	isDivisibleBy,
 	isEmpty,
+	isHalfWidth,
 	isHexadecimal,
 	isHexColor,
 	isIP,
@@ -212,6 +213,15 @@ export function IsEmpty(): PropertyDecorator {
 export function IsLowerCase(): PropertyDecorator {
 	return createDecorator((prop: string) => isLowerCase(prop), {
 		errorMessage: `Property must be a string in lower case`,
+		constraints: [],
+	});
+}
+/**
+ * Decorator that checks if the property is a half-width string.
+ */
+export function IsHalfWidth(): PropertyDecorator {
+	return createDecorator((prop: string) => isHalfWidth(prop), {
+		errorMessage: 'Property must be a half-width string',
 		constraints: [],
 	});
 }
