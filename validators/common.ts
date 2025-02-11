@@ -24,12 +24,14 @@ import {
 	isLowerCase,
 	isPort,
 	isUpperCase,
+	isURL,
 } from '../behaviors/common/mod.ts';
 import { IsBase64Options } from '../behaviors/common/isBase64.ts';
 import { defaultIsByteLengthOptions } from '../behaviors/common/isByteLength.ts';
 import { defaultCurrencyOptions } from '../behaviors/common/isCurrency.ts';
 import { defaultDecimalOptions } from '../behaviors/common/isDecimal.ts';
 import { contains, defaultContainsOptions } from '../behaviors/common/contains.ts';
+import { defaultURLOptions } from '../behaviors/common/isURL.ts';
 
 /**
  * Decorator that checks if the property contains the seed.
@@ -256,6 +258,15 @@ export function IsDivisibleBy(dividend: number): PropertyDecorator {
 export function IsUpperCase(): PropertyDecorator {
 	return createDecorator((prop: string) => isUpperCase(prop), {
 		errorMessage: 'Property must be an uppercase only string',
+		constraints: [],
+	});
+}
+/**
+ * Decorator that checks if the property is an uppercase string.
+ */
+export function IsURL(options = defaultURLOptions): PropertyDecorator {
+	return createDecorator((prop: string) => isURL(prop, options), {
+		errorMessage: 'Property must be an valid URL',
 		constraints: [],
 	});
 }
