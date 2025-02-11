@@ -20,6 +20,7 @@ import {
 	IsDecimal,
 	IsDivisibleBy,
 	IsEmpty,
+	IsFullWidth,
 	IsHalfWidth,
 	IsHexadecimal,
 	IsHexColor,
@@ -81,6 +82,8 @@ class BodyPayload {
 
 	@IsEmpty()
 	public isEmpty!: string;
+	@IsFullWidth()
+	public isFullWidth!: string;
 
 	@IsLowerCase()
 	public isLowerCase!: string;
@@ -126,6 +129,7 @@ Deno.test('Common validators errors', async (ctx) => {
 	failingPayload.isDate = 'nonDate';
 	failingPayload.isDecimal = 'nondecimal';
 	failingPayload.isEmpty = 'nonEmpty';
+	failingPayload.isFullWidth = 'hello';
 	failingPayload.isLowerCase = 'UPPERCASE';
 	failingPayload.isHalfWidth = 'Ｈｅｌｌｏ';
 	failingPayload.IsHexColor = 'nonHexcolor';
@@ -281,6 +285,13 @@ Deno.test('Common validators errors', async (ctx) => {
 			errorMessage: `Property must be empty`,
 			constraints: [],
 			property: 'isEmpty',
+		}]);
+	});
+	await ctx.step('IsFullWidth', () => {
+		assertArrayIncludes(errors, [{
+			errorMessage: `Property must be a full-width string`,
+			constraints: [],
+			property: 'isFullWidth',
 		}]);
 	});
 	await ctx.step('IsLowerCase', () => {

@@ -18,6 +18,7 @@ import {
 	isDecimal,
 	isDivisibleBy,
 	isEmpty,
+	isFullWidth,
 	isHalfWidth,
 	isHexadecimal,
 	isHexColor,
@@ -196,6 +197,15 @@ export function IsDecimal(options = defaultDecimalOptions): PropertyDecorator {
 	return createDecorator((prop: string) => isDecimal(prop, options), {
 		errorMessage: `Property must be a decimal string for ${options.locale} locale`,
 		constraints: [options],
+	});
+}
+/**
+ * Decorator that checks if the property is full-width.
+ */
+export function IsFullWidth(): PropertyDecorator {
+	return createDecorator((prop: string) => isFullWidth(prop), {
+		errorMessage: `Property must be a full-width string`,
+		constraints: [],
 	});
 }
 /**
